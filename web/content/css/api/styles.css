@@ -1,0 +1,14 @@
+.wi-drawer-header {
+  box-sizing: border-box;
+  padding: 16px;
+  height: 150px;
+}
+.wrapper{
+  position: relative;
+  min-height: 90%;
+}
+footer{
+  position: absolute;
+  bottom: 0;
+  width: 98.5%;
+}
