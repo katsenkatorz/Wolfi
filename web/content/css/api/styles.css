@@ -3,12 +3,16 @@
   padding: 16px;
   height: 150px;
 }
-.wrapper{
+.wi-wrapper{
   position: relative;
   min-height: 90%;
+
 }
 footer{
   position: absolute;
   bottom: 0;
   width: 98.5%;
+}
+.wi-header{
+  min-height: 64px;
 }
