@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new BackOffice\HomeBundle\HomeBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new User\UserBundle\UserBundle(),
+            new FrontOffice\AppBundle\AppBundle(),
         );
 
 

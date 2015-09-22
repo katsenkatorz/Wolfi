@@ -1,22 +1,11 @@
 <header class="mdl-layout__header">
   <div class="mdl-layout-icon"></div>
   <div class="mdl-layout__header-row wi-header">
-    <span class="mdl-layout-title">Wolfi Project !</span>
+    <a href="{{ path('app_homepage') }}" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
+      Wolfi Project  !
+    </a>
     <div class="mdl-layout-spacer"></div>
-    <nav class="mdl-navigation mdl-layout--large-screen-only">
-      <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell mdl-cell--6-col">
-          <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect" href="{{ path("fos_user_registration_register") }}">
-            Inscription
-          </a>
-        </div>
-        <div class="mdl-cell mdl-cell mdl-cell--6-col">
-          <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--grey-50" href="{{ path("fos_user_security_login") }}">
-            Connexion
-          </a>
-        </div>
-      </div>
-    </nav>
+    {% include 'UserBundle:Shared:_userConnectedOff.html.twig' %}
   </div>
 </header>
 <div class="mdl-layout__drawer mdl-layout--small-screen-only">

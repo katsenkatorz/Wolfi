@@ -21,3 +21,16 @@ footer{
   margin:0% auto;
   max-width:400px;
 }
+.wi-width-100{
+  width: 100%;
+}
+.pull-right{
+  float: right!important;
+}
+.text-right{
+  text-align: right;
+}
+a.mdl-layout-title{
+  text-transform: capitalize;
+  text-decoration: none;
+}

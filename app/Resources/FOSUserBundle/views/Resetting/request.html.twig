@@ -1,5 +1,9 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
 
 {% block fos_user_content %}
-{% include "FOSUserBundle:Resetting:request_content.html.twig" %}
+<div class="mdl-cell mdl-cell--4-col"></div>
+
+<div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+  {% include "FOSUserBundle:Resetting:request_content.html.twig" %}
+</div>
 {% endblock fos_user_content %}

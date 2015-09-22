@@ -5,39 +5,39 @@
 {% block fos_user_content %}
 <div class="mdl-cell mdl-cell--4-col"></div>
 
-  <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-    <div class="mdl-card__title">
-      <i class="material-icons md-36">account_circle</i>&nbsp;
-      <h2 class="mdl-card__title-text">
-        {{ 'security.login.submit'|trans }}
-      </h2>
-    </div>
-    <div class="mdl-card__supporting-text">
-      {% if error %}
-      {{ error.messageKey|trans(error.messageData, 'security') }}
-      {% endif %}
-      <form action="{{ path("fos_user_security_check") }}" method="post">
-        <input name="_csrf_token" type="hidden" value="{{ csrf_token }}"/>
-
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input class="mdl-textfield__input" id="username" name="_username" required="required" type="text" value="{{ last_username }}"/>
-          <label class="mdl-textfield__label" for="username">{{ 'security.login.username'|trans }}</label>
-        </div>
-        <br>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input class="mdl-textfield__input" id="password" name="_password" required="required" type="password"/>
-          <label class="mdl-textfield__label" for="password">{{ 'security.login.password'|trans }}</label>
-        </div>
-
-        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="remember_me">
-          <input class="mdl-switch__input" id="remember_me" name="_remember_me" type="checkbox" value="on"/>
-          <span class="mdl-switch__label">{{ 'security.login.remember_me'|trans }}</span>
-        </label>
-      </div>
-      <div class="mdl-card__actions mdl-card--border">
-        <input class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="_submit" name="_submit" type="submit" value="{{ 'security.login.submit'|trans }}"/>
-      </div>
-    </form>
+<div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+  <div class="mdl-card__title">
+    <i class="material-icons md-36">account_circle</i>&nbsp;
+    <h2 class="mdl-card__title-text">
+      {{ 'security.login.submit'|trans }}
+    </h2>
   </div>
+    <form action="{{ path('fos_user_security_check') }}" method="post">
+      <div class="mdl-card__supporting-text">
+        {% if error %}
+        {{ error.messageKey|trans(error.messageData, 'security') }}
+        {% endif %}
+      <input name="_csrf_token" type="hidden" value="{{ csrf_token }}"/>
+      <input type="hidden" name="_target_path" value="home_homepage" />
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label wi-width-100">
+        <input class="mdl-textfield__input" id="username" name="_username" required="required" type="text" value="{{ last_username }}"/>
+        <label class="mdl-textfield__label" for="username">{{ 'security.login.username'|trans }}</label>
+      </div>
+      <br>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label wi-width-100">
+        <input class="mdl-textfield__input" id="password" name="_password" required="required" type="password"/>
+        <label class="mdl-textfield__label" for="password">{{ 'security.login.password'|trans }}</label>
+      </div>
+      <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="remember_me">
+        <input class="mdl-switch__input" id="remember_me" name="_remember_me" type="checkbox" value="on"/>
+        <span class="mdl-switch__label">{{ 'security.login.remember_me'|trans }}</span>
+      </label>
+    </div>
+    <div class="mdl-card__actions mdl-card--border text-right">
+      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="{{ path('fos_user_resetting_request') }}">Mot de passe perdu ?</a>
+      <input class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" id="_submit" name="_submit" type="submit" value="{{ 'security.login.submit'|trans }}"/>
+    </div>
+  </form>
+</div>
 
 {% endblock fos_user_content %}
