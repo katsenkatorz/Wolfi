@@ -5,14 +5,19 @@
 }
 .wi-wrapper{
   position: relative;
-  min-height: 90%;
+  min-height: 100%;
 
 }
 footer{
   position: absolute;
   bottom: 0;
-  width: 98.5%;
+  width: 100%;
+  box-sizing: border-box;
 }
 .wi-header{
   min-height: 64px;
+}
+.wi-div-center{
+  margin:0% auto;
+  max-width:400px;
 }

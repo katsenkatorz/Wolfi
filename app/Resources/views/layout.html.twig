@@ -5,26 +5,27 @@
     <title>{% block title %}Project Wolfi{% endblock %}</title>
     <link href="{{ asset('content/css/material-design/material.min.css') }}" rel="stylesheet">
     <link href="{{ asset('content/css/material-design/material-font.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
     <link href="{{ asset('content/css/api/styles.css') }}" rel="stylesheet">
     {% block stylesheets %}{% endblock %}
     <link href="{{ asset('favicon.ico') }}" rel="icon" type="image/x-icon"/>
     <script src="{{ asset('content/js/jquery-2.1.4.min.js') }}"></script>
   </head>
   <body>
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header ">
       {% include("::shared/_header.html.twig") %}
-      <main class="mdl-layout__content wi-wrapper">
-        <div class="mdl-grid">
-          <div class="mdl-cell mdl-cell--12-col">            
-            {% block body %}{% endblock %}
+      <main class="mdl-layout__content ">
+        <div class="page-content">
+          <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--12-col">
+              {% block body %}{% endblock %}
+            </div>
           </div>
         </div>
-
-        {% include("::shared/_footer.html.twig") %}
       </main>
-
+      {% include("::shared/_footer.html.twig") %}
     </div>
+
     <script src="{{ asset('content/js/material-design/material.min.js') }}"></script>
     <script src="{{ asset('content/js/main.js') }}"></script>
     {% block javascripts %}{% endblock %}

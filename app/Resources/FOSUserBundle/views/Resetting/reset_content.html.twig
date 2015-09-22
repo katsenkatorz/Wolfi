@@ -1,8 +1,22 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" {{ form_enctype(form) }} method="POST" class="fos_user_resetting_reset">
-    {{ form_widget(form) }}
+<form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" class="fos_user_resetting_reset" method="POST" {{ form_enctype(form) }}>
+  <div id="fos_user_registration_form">
     <div>
-        <input type="submit" value="{{ 'resetting.reset.submit'|trans }}" />
-    </div>
+      <label class="required" for="fos_user_registration_form_email">Adresse e-mail</label>
+      <input id="fos_user_registration_form_email" name="fos_user_registration_form[email]" required="required" type="email"></div>
+    <div>
+      <label class="required" for="fos_user_registration_form_username">Nom d'utilisateur</label>
+      <input id="fos_user_registration_form_username" maxlength="255" name="fos_user_registration_form[username]" pattern=".{2,}" required="required" type="text"></div>
+    <div>
+      <label class="required" for="fos_user_registration_form_plainPassword_first">Mot de passe</label>
+      <input id="fos_user_registration_form_plainPassword_first" name="fos_user_registration_form[plainPassword][first]" required="required" type="password"></div>
+    <div>
+      <label class="required" for="fos_user_registration_form_plainPassword_second">Vérification</label>
+      <input id="fos_user_registration_form_plainPassword_second" name="fos_user_registration_form[plainPassword][second]" required="required" type="password"></div>
+      <input id="fos_user_registration_form__token" name="fos_user_registration_form[_token]" type="hidden" value="NJFEMLG6bTLFeps311MC1jlqi55HlF0YwIhiYbAE5-0"></div>
+  <div>
+  <div>
+    <input type="submit" value="{{ 'resetting.reset.submit'|trans }}"/>
+  </div>
 </form>
