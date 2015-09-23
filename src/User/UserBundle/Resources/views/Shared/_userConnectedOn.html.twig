@@ -1,0 +1,29 @@
+<div class="user-logged-in mdl-color--grey-800">
+  <div class="content ">
+    <div class="user-avatar">
+      <i class="material-icons">face</i>
+
+    </div>
+    <div class="user-name">
+      Tiktic
+      <span class="text-muted f9">admin</span>
+      <div class="menu-right">
+        <button class="mdl-button mdl-js-button mdl-button--icon" id="demo-menu-lower-right">
+          <i class="material-icons">more_vert</i>
+        </button>
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-right">
+          <a class="mdl-menu__item" href="{{ path('fos_user_profile_edit') }}">Editer Profil
+          </a>
+        </ul>
+      </div>
+    </div>
+    <div class="user-email text-muted">
+      last@samurai.jp
+    </div>
+    <div class="user-actions">
+      <a class="mdl-button mdl-js-button mdl-color-text--white" href="{{ path('fos_user_profile_show') }}">Profil</a>&nbsp;
+      <a class="mdl-button mdl-js-button mdl-color-text--white" href="{{ path('fos_user_security_logout') }}">déco</a>
+    </div>
+  </div>
+
+</div>
