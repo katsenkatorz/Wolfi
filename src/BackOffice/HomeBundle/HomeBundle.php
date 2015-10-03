@@ -1,9 +1,12 @@
 <?php
 
-namespace BackOffice\HomeBundle;
+    namespace BackOffice\HomeBundle;
 
-use Symfony\Component\HttpKernel\Bundle\Bundle;
+    use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class HomeBundle extends Bundle
-{
-}
+
+    class HomeBundle extends Bundle
+    {
+
+
+    }

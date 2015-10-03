@@ -1,13 +1,26 @@
 <?php
 
-namespace BackOffice\HomeBundle\Controller;
+    namespace BackOffice\HomeBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+    use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class DefaultController extends Controller
-{
-    public function indexAction()
+
+    /**
+     * Class DefaultController
+     *
+     * @package BackOffice\HomeBundle\Controller
+     */
+    class DefaultController extends Controller
     {
-        return $this->render('HomeBundle:Default:index.html.twig');
+        /**
+         * @return \Symfony\Component\HttpFoundation\Response
+         */
+        public function indexAction()
+        {
+
+            $user = $this->getUser();
+            var_dump($user);
+
+            return $this->render('HomeBundle:Default:index.html.twig');
+        }
     }
-}
