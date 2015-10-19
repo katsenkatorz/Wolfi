@@ -1,0 +1,30 @@
+category:
+    path:     /
+    defaults: { _controller: "AdminBundle:Category:index" }
+
+category_show:
+    path:     /{id}/show
+    defaults: { _controller: "AdminBundle:Category:show" }
+
+category_new:
+    path:     /new
+    defaults: { _controller: "AdminBundle:Category:new" }
+
+category_create:
+    path:     /create
+    defaults: { _controller: "AdminBundle:Category:create" }
+    methods:  POST
+
+category_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AdminBundle:Category:edit" }
+
+category_update:
+    path:     /{id}/update
+    defaults: { _controller: "AdminBundle:Category:update" }
+    methods:  [POST, PUT]
+
+category_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AdminBundle:Category:delete" }
+    methods:  [POST, DELETE]

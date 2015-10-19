@@ -1,3 +1,4 @@
-admin_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: AdminBundle:Default:index }
+admin_category:
+    resource: "@AdminBundle/Resources/config/routing/category.yml"
+    prefix:   /admin/category
+
