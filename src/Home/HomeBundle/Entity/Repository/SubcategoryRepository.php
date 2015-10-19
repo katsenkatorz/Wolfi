@@ -1,6 +1,6 @@
 <?php
 
-namespace Home\HomeBundle\Entity;
+namespace Home\HomeBundle\Entity\Repository;
 
 /**
  * SubcategoryRepository

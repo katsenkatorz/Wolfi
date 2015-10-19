@@ -8,9 +8,9 @@ use Doctrine\ORM\Mapping as ORM;
  * car
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Home\HomeBundle\Entity\carRepository")
+ * @ORM\Entity(repositoryClass="Home\HomeBundle\Entity\Repository\CarRepository")
  */
-class car
+class Car
 {
     /**
      * @var integer
