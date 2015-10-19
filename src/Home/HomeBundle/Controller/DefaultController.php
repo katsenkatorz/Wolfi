@@ -1,6 +1,6 @@
 <?php
 
-    namespace BackOffice\HomeBundle\Controller;
+    namespace Home\HomeBundle\Controller;
 
     use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -8,7 +8,7 @@
     /**
      * Class DefaultController
      *
-     * @package BackOffice\HomeBundle\Controller
+     * @package Home\HomeBundle\Controller
      */
     class DefaultController extends Controller
     {
@@ -17,10 +17,10 @@
          */
         public function indexAction()
         {
-
-            $user = $this->getUser();
-            var_dump($user);
-
+            //$user = $this->getUser();
+            // var_dump($user);
             return $this->render('HomeBundle:Default:index.html.twig');
+
+
         }
     }

@@ -1,6 +1,6 @@
 <?php
 
-    namespace BackOffice\HomeBundle;
+    namespace Home\HomeBundle;
 
     use Symfony\Component\HttpKernel\Bundle\Bundle;
 
