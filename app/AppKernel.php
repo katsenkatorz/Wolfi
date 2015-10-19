@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new User\UserBundle\UserBundle(),
             new FrontOffice\AppBundle\AppBundle(),
+            new Administration\AdminBundle\AdminBundle(),
         );
 
 

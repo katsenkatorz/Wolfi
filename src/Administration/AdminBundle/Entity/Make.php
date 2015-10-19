@@ -1,6 +1,6 @@
 <?php
 
-namespace Home\HomeBundle\Entity;
+namespace Administration\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Make
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Home\HomeBundle\Entity\Repository\MakeRepository")
+ * @ORM\Entity(repositoryClass="Administration\AdminBundle\Entity\Repository\MakeRepository")
  */
 class Make
 {

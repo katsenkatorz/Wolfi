@@ -1,6 +1,6 @@
 <?php
 
-namespace Home\HomeBundle\Entity\Repository;
+namespace Administration\AdminBundle\Entity\Repository;
 
 /**
  * bodyRepository

@@ -1,16 +1,16 @@
 <?php
 
-namespace Home\HomeBundle\Entity;
+namespace Administration\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * body
+ * Transmission
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Home\HomeBundle\Entity\Repository\BodyRepository")
+ * @ORM\Entity(repositoryClass="Administration\AdminBundle\Entity\Repository\TransmissionRepository")
  */
-class Body
+class Transmission
 {
     /**
      * @var integer
@@ -24,7 +24,7 @@ class Body
     /**
      * @var string
      *
-     * @ORM\Column(name="type", type="string", length=50)
+     * @ORM\Column(name="type", type="string", length=45)
      */
     private $type;
 
@@ -44,7 +44,7 @@ class Body
      *
      * @param string $type
      *
-     * @return body
+     * @return Transmission
      */
     public function setType($type)
     {

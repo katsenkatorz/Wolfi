@@ -1,16 +1,16 @@
 <?php
 
-namespace Home\HomeBundle\Entity;
+namespace Administration\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Category
+ * body
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Home\HomeBundle\Entity\Repository\CategoryRepository")
+ * @ORM\Entity(repositoryClass="Administration\AdminBundle\Entity\Repository\BodyRepository")
  */
-class Category
+class Body
 {
     /**
      * @var integer
@@ -24,9 +24,9 @@ class Category
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=50)
+     * @ORM\Column(name="type", type="string", length=50)
      */
-    private $name;
+    private $type;
 
 
     /**
@@ -40,27 +40,27 @@ class Category
     }
 
     /**
-     * Set name
+     * Set type
      *
-     * @param string $name
+     * @param string $type
      *
-     * @return Category
+     * @return body
      */
-    public function setName($name)
+    public function setType($type)
     {
-        $this->name = $name;
+        $this->type = $type;
 
         return $this;
     }
 
     /**
-     * Get name
+     * Get type
      *
      * @return string
      */
-    public function getName()
+    public function getType()
     {
-        return $this->name;
+        return $this->type;
     }
 }
 
