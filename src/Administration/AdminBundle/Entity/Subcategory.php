@@ -22,6 +22,12 @@ class Subcategory
     private $id;
 
     /**
+     *
+     * @ORM\OneToOne(targetEntity="Administration\AdminBundle\Entity\Category", cascade={"persist"})
+     */
+    private $Category;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=50)

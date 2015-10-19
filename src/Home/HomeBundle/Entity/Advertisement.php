@@ -22,6 +22,12 @@ class Advertisement
     private $id;
 
     /**
+     *
+     * @ORM\OneToOne(targetEntity="Administration\AdminBundle\Entity\Subcategory", cascade={"persist"})
+     */
+    private $Subcategory;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=75)

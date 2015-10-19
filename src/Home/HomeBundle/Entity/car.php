@@ -22,6 +22,36 @@ class Car
     private $id;
 
     /**
+     *
+     * @ORM\OneToOne(targetEntity="Home\HomeBundle\Entity\Advertisement", cascade={"persist"})
+     */
+    private $Advertisement;
+
+    /**
+     *
+     * @ORM\OneToOne(targetEntity="Administration\AdminBundle\Entity\Fuel", cascade={"persist"})
+     */
+    private $Fuel;
+
+    /**
+     *
+     * @ORM\OneToOne(targetEntity="Administration\AdminBundle\Entity\Transmission", cascade={"persist"})
+     */
+   private $Transmission;
+
+    /**
+     *
+     * @ORM\OneToOne(targetEntity="Administration\AdminBundle\Entity\Body", cascade={"persist"})
+     */
+   private $Body;
+
+    /**
+     *
+     * @ORM\OneToOne(targetEntity="Administration\AdminBundle\Entity\Make", cascade={"persist"})
+     */
+   private $Make;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="year", type="string", length=4)
