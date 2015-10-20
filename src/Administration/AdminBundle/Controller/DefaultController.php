@@ -6,8 +6,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
-    public function indexAction($name)
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function indexAction()
     {
-        return $this->render('AdminBundle:Default:index.html.twig', array('name' => $name));
+        return $this->render('AdminBundle:Default:index.html.twig');
     }
 }

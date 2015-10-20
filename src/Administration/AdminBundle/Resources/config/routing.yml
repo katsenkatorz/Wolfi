@@ -1,4 +1,11 @@
+admin_subcategory:
+    resource: "@AdminBundle/Resources/config/routing/subcategory.yml"
+    prefix:   /subcategory
+
 admin_category:
     resource: "@AdminBundle/Resources/config/routing/category.yml"
-    prefix:   /admin/category
+    prefix:   /category
 
+admin:
+    path:     /
+    defaults: { _controller: AdminBundle:Default:index }

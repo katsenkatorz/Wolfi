@@ -23,7 +23,7 @@ class Advertisement
 
     /**
      *
-     * @ORM\OneToOne(targetEntity="Administration\AdminBundle\Entity\Subcategory", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Administration\AdminBundle\Entity\Subcategory", cascade={"persist"})
      */
     private $Subcategory;
 

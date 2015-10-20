@@ -29,7 +29,7 @@ class Car
 
     /**
      *
-     * @ORM\OneToOne(targetEntity="Administration\AdminBundle\Entity\Fuel", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Administration\AdminBundle\Entity\Fuel", cascade={"persist"})
      */
     private $Fuel;
 
@@ -41,13 +41,13 @@ class Car
 
     /**
      *
-     * @ORM\OneToOne(targetEntity="Administration\AdminBundle\Entity\Body", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Administration\AdminBundle\Entity\Body", cascade={"persist"})
      */
    private $Body;
 
     /**
      *
-     * @ORM\OneToOne(targetEntity="Administration\AdminBundle\Entity\Make", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Administration\AdminBundle\Entity\Make", cascade={"persist"})
      */
    private $Make;
 

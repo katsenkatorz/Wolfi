@@ -1,0 +1,30 @@
+subcategory:
+    path:     /
+    defaults: { _controller: "AdminBundle:Subcategory:index" }
+
+subcategory_show:
+    path:     /{id}/show
+    defaults: { _controller: "AdminBundle:Subcategory:show" }
+
+subcategory_new:
+    path:     /new
+    defaults: { _controller: "AdminBundle:Subcategory:new" }
+
+subcategory_create:
+    path:     /create
+    defaults: { _controller: "AdminBundle:Subcategory:create" }
+    methods:  POST
+
+subcategory_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AdminBundle:Subcategory:edit" }
+
+subcategory_update:
+    path:     /{id}/update
+    defaults: { _controller: "AdminBundle:Subcategory:update" }
+    methods:  [POST, PUT]
+
+subcategory_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AdminBundle:Subcategory:delete" }
+    methods:  [POST, DELETE]

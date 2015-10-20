@@ -1,0 +1,14 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+{% block admin_body %}
+    <h1>Subcategory creation</h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('subcategory') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

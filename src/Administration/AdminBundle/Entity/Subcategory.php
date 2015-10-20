@@ -23,7 +23,7 @@ class Subcategory
 
     /**
      *
-     * @ORM\OneToOne(targetEntity="Administration\AdminBundle\Entity\Category", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Administration\AdminBundle\Entity\Category", cascade={"persist"})
      */
     private $Category;
 
