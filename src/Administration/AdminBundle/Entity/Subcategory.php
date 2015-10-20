@@ -68,5 +68,28 @@ class Subcategory
     {
         return $this->name;
     }
+
+    /**
+     * Set Category
+     *
+     * @param \Administration\AdminBundle\Entity\Category $categorie
+     * @return Subcategory
+     */
+    public function setCategory(\Administration\AdminBundle\Entity\Category $Category)
+    {
+        $this->Category = $Category;
+
+        return $this;
+    }
+
+    /**
+     * Get Category
+     *
+     * @return \Administration\AdminBundle\Entity\Category
+     */
+    public function getCategory()
+    {
+        return $this->Category;
+    }
 }
 
