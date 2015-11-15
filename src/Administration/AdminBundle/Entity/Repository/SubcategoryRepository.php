@@ -10,4 +10,18 @@ namespace Administration\AdminBundle\Entity\Repository;
  */
 class SubcategoryRepository extends \Doctrine\ORM\EntityRepository
 {
+	/**
+	 * Method to get Subcategory with Category
+	 *
+	 * @return array
+	 */
+	public function getSubcategoriesWithCategories()
+	{
+		$qb = $this->createQueryBuilder('sc')
+				->leftJoin('sc.Category', 'c')
+				->select('sc, c')
+				->orderBy('sc.name');
+
+		return $qb->getQuery()->getResult();
+	}
 }

@@ -1,4 +1,4 @@
 services:
-#    home.example:
-#        class: Home\HomeBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    home_home.services.datamanagement:
+        class: Home\HomeBundle\Services\DataManagementService
+        arguments: [ @doctrine.orm.entity_manager ]

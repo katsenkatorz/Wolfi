@@ -1,8 +1,15 @@
 {% extends "::layout/layoutHome.html.twig" %}
 
 {% block title %}{{ parent() }} - Home {% endblock %}
-
+{% block page_title %}
+        {% block home_page_title %}
+        {% endblock %}
+{% endblock %}
 {% block body %}
         {% block home_body %}
+        {% endblock %}
+{% endblock %}
+{% block javascripts %}
+        {% block home_javascripts %}
         {% endblock %}
 {% endblock %}

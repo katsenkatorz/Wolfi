@@ -1,27 +1,22 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8"/>
+<head>
+    <meta charset="UTF-8" />
     <title>{% block title %}Project Wolfi{% endblock %}</title>
     {% include("::shared/_stylesheets.html.twig") %}
     {% block stylesheets %}{% endblock %}
-    <link href="{{ asset('favicon.ico') }}" rel="icon" type="image/x-icon"/>
-  </head>
-  <body class="mdl-color--blue-grey-50">
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-      {% include("::shared/home/_headerHome.html.twig") %}
-      <main class="mdl-layout__content ">
+    <link href="{{ asset('favicon.ico') }}" rel="icon" type="image/x-icon" />
+</head>
+<body class="mdl-color--blue-grey-50">
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    {% include "::shared/home/_headerHome.html.twig"  with {page_title: block('page_title')} %}
+    <main class="mdl-layout__content ">
         <div class="page-content">
-          <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell--12-col">
-              {% block body %}{% endblock %}
-
-            </div>
-          </div>
+            {% block body %}{% endblock %}
         </div>
-      </main>
-    </div>
-    {% include("::shared/_scripts.html.twig") %}
-    {% block javascripts %}{% endblock %}
-  </body>
+    </main>
+</div>
+{% include("::shared/_scripts.html.twig") %}
+{% block javascripts %}{% endblock %}
+</body>
 </html>

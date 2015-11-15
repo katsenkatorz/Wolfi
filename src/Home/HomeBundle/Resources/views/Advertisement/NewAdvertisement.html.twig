@@ -1,0 +1,111 @@
+{% extends 'HomeBundle::layout.html.twig' %}
+{% block home_page_title %}
+    Ajouter une annonce
+{% endblock %}
+{% block home_body %}
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--8-col">
+            <div id="mobile" class="mdl-shadow--2dp">
+                <header class="header-menu-advertisement">
+                    <div class="text">
+                        Choisir une catégorie
+                    </div>
+                </header>
+                <div id="menu">
+                    <div class="wrapper mdl-grid">
+                        {% for category in categories %}
+                        <div class="menu-link mdl-cell--3-col">
+                            <div class="content">
+                                <header>
+                                    <div class="back arrow"></div>
+                                    <div class="text">
+                                        {{ category.name }}
+                                    </div>
+                                    <div class="next arrow"></div>
+                                    <div class="clear"></div>
+                                </header>
+                                <article>
+                                    1
+                                </article>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <hr />
+            {% for Subcategory in Subcategories %}
+                {{ Subcategory.Category.name }}
+                <ul>
+                    <li>{{ Subcategory.name }}</li>
+                </ul>
+            {% endfor %}
+            <hr />
+            {% for category in categories %}
+                <ul>
+                    <li id="{{ category.id }}">{{ category.name }}</li>
+                </ul>
+            {% endfor %}
+            <hr />
+
+
+        </div>
+    </div>
+{% endblock %}
+{% block home_javascripts %}
+    <script>
+        $(function () {
+            $('li').click(function (e) {
+                var id = e.target.id;
+                getSubcategories(id);
+            });
+        });
+
+        function getSubcategories(id) {
+            $.ajax({
+                type      : 'post',
+                url       : Routing.generate('GetSubcategories', {id: id}),
+                //url: 'http://wolfi.local/app_dev.php/Home/GetSubcategories/' + id,
+                beforeSend: function () {
+                    console.log('loading');
+                },
+                success   : function (data) {
+                    $.each(data.Subcategories, function (index, value) {
+                        console.log(index + " - " + value);
+                    });
+                }
+            });
+        }
+
+        //test
+        function openMenu(menu) {
+            menu.classList.add('open');
+            menu.removeEventListener('click', menu.listener, false);
+            menu.removeEventListener('touchstart', menu.listener, false);
+            var header = menu.querySelector('header');
+            header.listener = closeMenu.bind(null, menu, header);
+            header.addEventListener('click', header.listener, false);
+            header.addEventListener('touchstart', header.listener, false);
+            return header.listener;
+        }
+        function closeMenu(menu, header) {
+            menu.classList.remove('open');
+            header.removeEventListener('click', header.listener, false);
+            header.removeEventListener('touchstart', header.listener, false);
+            setTimeout(function () {
+                addMenuListener(menu);
+            }, 100);
+        }
+        function addMenuListener(node) {
+            node.listener = openMenu.bind(null, node);
+            node.addEventListener('click', node.listener, false);
+            node.addEventListener('touchstart', node.listener, false);
+        }
+        var links = document.querySelectorAll('.menu-link');
+        [].forEach.call(links, function (node) {
+            addMenuListener(node);
+        });
+        //test
+    </script>
+{% endblock %}
+

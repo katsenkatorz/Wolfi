@@ -20,12 +20,12 @@
         {% endif %}
         <input name="_csrf_token" type="hidden" value="{{ csrf_token }}"/>
         <input name="_target_path" type="hidden" value="home_homepage"/>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label wi-width-100">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label width-100">
           <input class="mdl-textfield__input" id="username" name="_username" required="required" type="text" value="{{ last_username }}"/>
           <label class="mdl-textfield__label" for="username">{{ 'security.login.username'|trans }}</label>
         </div>
         <br>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label wi-width-100">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label width-100">
           <input class="mdl-textfield__input" id="password" name="_password" required="required" type="password"/>
           <label class="mdl-textfield__label" for="password">{{ 'security.login.password'|trans }}</label>
         </div>
@@ -41,5 +41,4 @@
     </form>
   </div>
 </div>
-
 {% endblock fos_user_content %}

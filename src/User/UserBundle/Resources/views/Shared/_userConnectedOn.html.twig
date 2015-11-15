@@ -1,29 +1,35 @@
-<div class="user-logged-in mdl-color--blue-grey-900">
-  <div class="content ">
-    <div class="user-avatar">
-      <i class="material-icons">face</i>
 
+<div id="wi-profile">
+    <div id="wi-profile-wrapper">
+        <i class="material-icons f40">
+            account_circle
+        </i>&nbsp;
     </div>
-    <div class="user-name">
-      {{ app.user.username }}
-      <span class="text-muted f9">admin</span>
-      <div class="menu-right">
-        <button class="mdl-button mdl-js-button mdl-button--icon" id="demo-menu-lower-right">
-          <i class="material-icons">more_vert</i>
-        </button>
-        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-right">
-          <a class="mdl-menu__item" href="{{ path('fos_user_profile_edit') }}">Editer Profil
-          </a>
-        </ul>
-      </div>
-    </div>
-    <div class="user-email text-muted">
-      {{ app.user.email }}
-    </div>
-    <div class="user-actions">
-      <a class="mdl-button mdl-js-button mdl-color-text--white" href="{{ path('fos_user_profile_show') }}">Profil</a>&nbsp;
-      <a class="mdl-button mdl-js-button mdl-color-text--white" href="{{ path('fos_user_security_logout') }}">déco</a>
-    </div>
-  </div>
 
+    <div id="wi-profile-display">
+        <div id="wi-profile-triangle"></div>
+        <div class="demo-card-square mdl-card mdl-shadow--8dp">
+            <div class="mdl-card__title mdl-card--expand">
+                <h2 class="mdl-card__title-text">{{ app.user.email }}</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+                <i class="material-icons f40">
+                    account_circle
+                </i>
+                {{ app.user.username }} -
+                {{ app.user.email }}
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+                <a href="{{ path('fos_user_profile_show') }}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent">
+                    Profil
+                </a>
+                <a href="{{ path('fos_user_security_logout') }}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect pull-right">
+                    Déconnexion
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
+
+
+

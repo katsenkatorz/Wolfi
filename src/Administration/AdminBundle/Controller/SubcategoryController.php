@@ -78,6 +78,7 @@ class SubcategoryController extends Controller
      */
     public function newAction()
     {
+
         $entity = new Subcategory();
         $form   = $this->createCreateForm($entity);
 

@@ -1,5 +1,7 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
-
+{% extends "UserBundle::layoutHome.html.twig" %}
+{% block user_page_tile %}
+    Profil
+{% endblock %}
 {% block fos_user_content %}
-{% include "FOSUserBundle:Profile:show_content.html.twig" %}
+    {% include "FOSUserBundle:Profile:show_content.html.twig" %}
 {% endblock fos_user_content %}

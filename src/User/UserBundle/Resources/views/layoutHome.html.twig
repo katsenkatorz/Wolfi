@@ -1,0 +1,7 @@
+{% extends "::layout/layoutHome.html.twig" %}
+{% block page_title %}
+{% block user_page_tile %}{% endblock %}
+{% endblock %}
+{% block body %}
+    {{ block('fos_user_content') }}
+{% endblock %}

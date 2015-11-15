@@ -1,0 +1,13 @@
+//
+// Transition
+// --------------------------------------------------------------
+@mixin transition ($transition: all 0.15s ease-out) {
+   -webkit-transition: $transition;  /* Android 2.1+, Chrome 1-25, iOS 3.2-6.1, Safari 3.2-6  */
+   transition: $transition;  /* Chrome 26, Firefox 16+, iOS 7+, IE 10+, Opera, Safari 6.1+  */
+}
+//
+// Shadow
+// --------------------------------------------------------------
+@mixin shadow($size: 8px) {
+   box-shadow: 0 $size 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}

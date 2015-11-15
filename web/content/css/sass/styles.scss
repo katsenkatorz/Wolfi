@@ -1,37 +1,10 @@
-@import 'Shared/helpers.scss';
-@import 'Shared/colors.scss';
+@import 'Shared/_helpers';
+@import 'Shared/_colors';
+@import 'Shared/_mixins';
+@import 'Shared/_header';
+@import "Shared/_menu-categories";
 
-.wi-drawer-header {
-   box-sizing:border-box;
-   padding:16px;
-   height:150px;
+html, body{
+   font-family:"Roboto", "Helvetica", "Arial", sans-serif;
 }
 
-.wi-header {
-   min-height:64px;
-}
-
-a.mdl-layout-title {
-   text-transform:capitalize;
-   text-decoration:none;
-}
-
-.content {
-   display:table-cell;
-   vertical-align:middle;
-   padding:0 22px;
-
-   text-transform:uppercase;
-   .user-logged-in {
-      min-height:150px;
-      position:relative;
-      display:table;
-      width:100%;
-      -webkit-box-shadow:inset 0 0 2px rgba(0, 0, 0, .1);
-      box-shadow:inset 0 0 2px rgba(0, 0, 0, .1);
-   }
-}
-
-.text-muted {
-   color:$lightgrey;
-}

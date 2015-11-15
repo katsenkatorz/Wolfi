@@ -2,17 +2,13 @@ admin:
     resource: "@AdminBundle/Resources/config/routing.yml"
     prefix:   /admin/
 
-app:
-    resource: "@AppBundle/Resources/config/routing.yml"
-    prefix:   /
-
 user:
     resource: "@UserBundle/Resources/config/routing.yml"
     prefix:   /
 
 home:
     resource: "@HomeBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /Home/
 
 app:
     resource: "@AppBundle/Resources/config/routing.yml"
@@ -20,3 +16,6 @@ app:
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"

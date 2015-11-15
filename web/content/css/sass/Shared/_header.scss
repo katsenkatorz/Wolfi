@@ -1,0 +1,236 @@
+
+header{
+   .wi-drawer-header {
+      box-sizing:border-box;
+      padding:16px;
+      height:150px;
+   }
+
+   a.mdl-layout-title {
+      text-transform:capitalize;
+      text-decoration:none;
+   }
+
+
+   #wi-profile {
+      position:relative;
+      cursor:pointer;
+      @media screen and (max-width:1024px) {
+         margin:30px;
+      }
+
+
+      #wi-profile-display {
+         cursor:text;
+         display:none;
+         position:absolute;
+         color:black;
+         height:150px;
+         width:300px;
+         background:#ffffff;
+         margin:15px 0;
+         right:0;
+         z-index:1999;
+         #wi-profile-triangle {
+            position:absolute;
+            width:0;
+            height:0;
+            right:0;
+            top:-15px;
+            border-style:solid;
+            border-width:0 25px 25px 25px;
+            border-color:transparent transparent #ffffff transparent;
+            z-index:9999;
+         }
+
+      }
+
+   }
+
+   .wi-search {
+      padding:0 155px;
+      @media screen and (max-width:1024px) {
+         padding:0 15px;
+      }
+      #wi-search-wrapper {
+         height:36px;
+         width:100%;
+         position:relative;
+
+         #wi-autocomplete-wrapper {
+            position:relative;
+            margin-top:16px;
+            @media screen and (max-width:1024px) {
+               margin-top:12px;
+            }
+            #wi-autocomplete-content {
+               box-sizing:border-box;
+               display:none;
+               height:200px;
+               background:#ffffff;
+               box-shadow:0 0 2px rgba(0, 0, 0, .12), 0 2px 4px rgba(0, 0, 0, .24);
+               max-height:calc(100vh - 56px);
+               overflow-y:auto;
+               position:absolute;
+               transition:transform .2s, visibility .2s;
+               transform:translateY(0);
+               width:100%;
+               z-index:20;
+            }
+
+         }
+
+         .material-icons {
+            position:absolute;
+            top:6px;
+            left:25px;
+         }
+
+         #wi-search-input {
+            width:100%;
+            height:36px;
+            background:0;
+            border:0;
+            color:#ffffff;
+            -ms-flex:1;
+            -webkit-flex:1;
+            flex:1;
+            margin:0;
+            padding:8px 8px 8px 72px;
+            transition:color .2s;
+            background:rgba(255, 255, 255, 0.1);
+            border-radius:2px;
+            box-sizing:border-box;
+
+            &::-webkit-input-placeholder {
+               color:#ffffff;
+            }
+
+            &:-moz-placeholder {
+               /* Firefox 18- */
+               color:#ffffff;
+            }
+
+            &::-moz-placeholder {
+               /* Firefox 19+ */
+               color:#ffffff;
+            }
+
+            &:-ms-input-placeholder {
+               color:#ffffff;
+            }
+            &:hover {
+               background:rgba(255, 255, 255, .25);
+            }
+            &:focus {
+               background:#fff;
+               border:0;
+               color:#000000;
+               outline:0;
+               #wi-search-wrapper .material-icons {
+                  color:red;
+               }
+               &::-webkit-input-placeholder {
+                  color:grey;
+               }
+               &:-moz-placeholder {
+                  /* Firefox 18- */
+                  color:grey;
+               }
+               &::-moz-placeholder {
+                  /* Firefox 19+ */
+                  color:grey;
+               }
+               &:-ms-input-placeholder {
+                  color:grey;
+               }
+            }
+
+         }
+      }
+   }
+
+
+}
+
+//
+// Hover on round btn
+// ----------------------------------------------------------
+.morph {
+   @include transition(all 0.25s ease-in-out);
+   i.norm {
+      @include transition(all 0.55s ease-in-out);
+      transform:translate(-12px, -12px) rotate(-360deg);
+      opacity:1;
+   }
+   i.alt {
+      @include transition(all 0.45s ease-in-out);
+      transform:scale(0.5) translate(-22px, -22px) rotate(-360deg);
+      opacity:0;
+   }
+
+   &:hover {
+      @include shadow(4px);
+
+      i.norm {
+         opacity:0;
+         transform:translate(-12px, -12px) rotate(720deg);
+      }
+      i.alt {
+         opacity:1;
+         transform:scale(1) translate(-12px, -12px) rotate(0deg);
+      }
+   }
+
+   &:active {
+      .ripple {
+         -webkit-animation:ripples 0.3s 1;
+         -moz-animation:ripples 0.3s 1;
+         -o-animation:ripples 0.3s 1;
+         animation:ripples 0.3s 1;
+      }
+   }
+}
+//
+// Fix bug scroll header
+// ----------------------------------------------------------
+.mdl-layout__header--waterfall{
+   overflow:visible;
+}
+.mdl-layout__header.is-compact{
+   overflow:hidden;
+}
+.mdl-layout__header.is-compact {
+   box-shadow:none;
+}
+.header-menu{
+   z-index:3;
+   position:relative;
+   align-items: center;
+   max-height: 64px;
+   margin: 0;
+   padding: 20px 40px 20px 80px;
+
+   //
+   // Place add button
+   // ----------------------------------------------------------
+   #add {
+      position:absolute;
+      right:80px;
+      bottom:-26px;
+      z-index:1000;
+      &:hover{
+         @include shadow(14px);
+      }
+      @media screen and (max-width:1024px) {
+         right:30px;
+
+      }
+   }
+}
+//
+// Fix color on display drawer
+// ----------------------------------------------------------
+.mdl-layout__drawer.is-visible~.mdl-layout__obfuscator {
+   z-index:999;
+}

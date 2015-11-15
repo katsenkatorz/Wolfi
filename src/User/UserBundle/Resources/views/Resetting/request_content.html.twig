@@ -13,7 +13,7 @@
         {% if invalid_username is defined %}
           {{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}) }}
         {% endif %}
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label wi-width-100">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label width-100">
           <input class="mdl-textfield__input" id="username" name="username" required="required" type="text"/>
           <label class="mdl-textfield__label" for="username">{{ 'resetting.request.username'|trans }}</label>
         </div>
