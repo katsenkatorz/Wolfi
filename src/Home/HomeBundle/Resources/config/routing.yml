@@ -6,8 +6,8 @@ NewAdvertisement:
     path:     /NewAdvertisement
     defaults: { _controller: HomeBundle:Advertisement:NewAdvertisement }
 
-GetSubcategories:
-    path:     /GetSubcategories/{id}
-    defaults: { _controller: HomeBundle:Advertisement:GetSubcategories }
+GetSubcategoriesById:
+    path:     /GetSubcategoriesById/{id}
+    defaults: { _controller: HomeBundle:Advertisement:GetSubcategoriesById }
     options:
         expose: true

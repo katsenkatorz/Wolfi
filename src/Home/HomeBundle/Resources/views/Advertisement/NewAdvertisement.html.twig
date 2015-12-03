@@ -5,79 +5,73 @@
 {% block home_body %}
     <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--8-col">
-            <div id="mobile" class="mdl-shadow--2dp">
-                <header class="header-menu-advertisement">
-                    <div class="text">
-                        Choisir une catégorie
-                    </div>
+            <div id="menu-select-subcategory" class="mdl-color--blue-grey-100">
+                <header class="header-select-subcategory ">
+                    Choisir une catégorie
                 </header>
                 <div id="menu">
                     <div class="wrapper mdl-grid">
                         {% for category in categories %}
-                        <div class="menu-link mdl-cell--3-col">
-                            <div class="content">
-                                <header>
-                                    <div class="back arrow"></div>
-                                    <div class="text">
-                                        {{ category.name }}
+                            <div class="menu-link mdl-cell--3-col" id="{{ category.id }}">
+                                <div class="content">
+                                    <header>
+                                        <div class="back arrow"></div>
+                                        <div>
+                                            {{ category.name }}
+                                        </div>
+                                        <div class="next arrow"></div>
+                                        <div class="clear"></div>
+                                    </header>
+                                    <div class="icon-category">
+                                        <i class="material-icons f28">directions_car</i>
                                     </div>
-                                    <div class="next arrow"></div>
-                                    <div class="clear"></div>
-                                </header>
-                                <article>
-                                    1
-                                </article>
+                                    <div id="progress-{{ category.id }}" class="mdl-progress mdl-js-progress mdl-progress__indeterminate width-100"></div>
+                                    <div class="subcategories">
+
+                                    </div>
+                                </div>
                             </div>
-                        </div>
                         {% endfor %}
                     </div>
                 </div>
             </div>
-            <hr />
-            {% for Subcategory in Subcategories %}
-                {{ Subcategory.Category.name }}
-                <ul>
-                    <li>{{ Subcategory.name }}</li>
-                </ul>
-            {% endfor %}
-            <hr />
-            {% for category in categories %}
-                <ul>
-                    <li id="{{ category.id }}">{{ category.name }}</li>
-                </ul>
-            {% endfor %}
-            <hr />
-
-
         </div>
     </div>
 {% endblock %}
 {% block home_javascripts %}
     <script>
         $(function () {
-            $('li').click(function (e) {
-                var id = e.target.id;
-                getSubcategories(id);
+            $('.menu-link').click(function (e) {
+                var result;
+                var id = e.currentTarget.id;
+                if (!$('#'+ id +'.menu-link').hasClass('load')) {result = getSubcategories(id);}
+                if (result) {$(this).addClass('load');}
             });
         });
 
         function getSubcategories(id) {
             $.ajax({
                 type      : 'post',
-                url       : Routing.generate('GetSubcategories', {id: id}),
+                url       : Routing.generate('GetSubcategoriesById', {id: id}),
                 //url: 'http://wolfi.local/app_dev.php/Home/GetSubcategories/' + id,
                 beforeSend: function () {
-                    console.log('loading');
+                    $("#progress-" + id + ".mdl-progress").show();
+                },
+                error     : function (xhr, textStatus, error) {
+                    $("#progress-" + id + ".mdl-progress").hide();
+                    $("#" + id + " .subcategories").append(error);
                 },
                 success   : function (data) {
                     $.each(data.Subcategories, function (index, value) {
-                        console.log(index + " - " + value);
+                        $("#" + id + " .subcategories").append('<div class="subcategory" id="subcategory-' + index + '">' + value + '</div>');
                     });
+                    $("#progress-" + id + ".mdl-progress").hide();
                 }
             });
+            return true;
         }
 
-        //test
+        //Open category
         function openMenu(menu) {
             menu.classList.add('open');
             menu.removeEventListener('click', menu.listener, false);
@@ -105,7 +99,7 @@
         [].forEach.call(links, function (node) {
             addMenuListener(node);
         });
-        //test
+        //Open category
     </script>
 {% endblock %}
 

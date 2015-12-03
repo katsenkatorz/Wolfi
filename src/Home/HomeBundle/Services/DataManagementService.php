@@ -49,4 +49,5 @@ class DataManagementService
 		return $this->em->getRepository('AdminBundle:Subcategory')->findBy(['Category' => $id]);
 	}
 
+
 }

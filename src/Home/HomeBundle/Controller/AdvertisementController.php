@@ -25,10 +25,14 @@ class AdvertisementController extends Controller
 		return $this->render('HomeBundle:Advertisement:NewAdvertisement.html.twig', [ 'categories' => $categories, 'Subcategories' => $Subcategories]);
 	}
 
+
 	/**
-	 * @return \Symfony\Component\HttpFoundation\Response
+	 *
+	 * @param $id
+	 * @return JsonResponse
+	 * @throws \Exception
 	 */
-	public function GetSubcategoriesAction($id)
+	public function GetSubcategoriesByIdAction($id)
 	{
 		$Subcategories = $this->container->get('home_home.services.datamanagement')->getSubcategoriesByIdCategory($id);
 
