@@ -18,7 +18,7 @@ class AdvertisementType extends AbstractType
             ->add('title', null, ['label' => 'crud.Advertisement.label.Title'])
             ->add('price', null, ['label' => 'crud.Advertisement.label.Price'])
             ->add('description', null, ['label' => 'crud.Advertisement.label.Description'])
-            ->add('dateAdd', null, ['label' => 'crud.Advertisement.label.Date add']);
+            ->add('dateAdd', null, ['format' => 'dd-MM-yyyy', 'widget' => 'single_text','label' => 'crud.Advertisement.label.Date add']);
     }
 
     /**

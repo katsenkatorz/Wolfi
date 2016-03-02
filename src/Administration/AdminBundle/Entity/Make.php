@@ -62,5 +62,14 @@ class Make
     {
         return $this->name;
     }
+
+    /**
+     * @return mixed
+     */
+    public function __toString()
+    {
+        return $this->getName();
+    }
+
 }
 

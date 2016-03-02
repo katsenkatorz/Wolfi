@@ -62,5 +62,13 @@ class Body
     {
         return $this->type;
     }
+
+    /**
+     * @return mixed
+     */
+    public function __toString()
+    {
+        return $this->getType();
+    }
 }
 

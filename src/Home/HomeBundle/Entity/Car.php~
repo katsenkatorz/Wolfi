@@ -331,18 +331,5 @@ class Car
 	{
 		return $this->Make;
 	}
-
-    /**
-     * Set advertisement
-     *
-     * @param \Home\HomeBundle\Entity\Advertisement $advertisement
-     *
-     * @return Car
-     */
-    public function setAdvertisement(\Home\HomeBundle\Entity\Advertisement $advertisement = null)
-    {
-        $this->Advertisement = $advertisement;
-
-        return $this;
-    }
 }
+
