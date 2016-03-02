@@ -4,102 +4,80 @@
 {% endblock %}
 {% block home_body %}
     <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--8-col">
-            <div id="menu-select-subcategory" class="mdl-color--blue-grey-100">
-                <header class="header-select-subcategory ">
-                    Choisir une catégorie
-                </header>
-                <div id="menu">
-                    <div class="wrapper mdl-grid">
-                        {% for category in categories %}
-                            <div class="menu-link mdl-cell--3-col" id="{{ category.id }}">
-                                <div class="content">
-                                    <header>
-                                        <div class="back arrow"></div>
-                                        <div>
-                                            {{ category.name }}
-                                        </div>
-                                        <div class="next arrow"></div>
-                                        <div class="clear"></div>
-                                    </header>
-                                    <div class="icon-category">
-                                        <i class="material-icons f28">directions_car</i>
-                                    </div>
-                                    <div id="progress-{{ category.id }}" class="mdl-progress mdl-js-progress mdl-progress__indeterminate width-100"></div>
-                                    <div class="subcategories">
-
-                                    </div>
+        <div class="mdl-cell--2-col-desktop"></div>
+        <div class="mdl-cell--8-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-color--white mdl-shadow--3dp">
+            <form class="form" action="#">
+                <!-- Steppers -->
+                <div class="wi-stepper">
+                    <!-- Header Steppers -->
+                    <div class="mdl-shadow--2dp wi-stepper-header">
+                        <div class="wi-stepper-group">
+                            <div class="wi-stepper-step">
+                                <div class="wi-stepper-chip mdl-color--primary">1</div>
+                                <div class="wi-stepper-title">
+                                    Choisir une catégorie
                                 </div>
                             </div>
-                        {% endfor %}
+                            <div class="wi-stepper-separator"></div>
+                        </div>
+                        <div class="wi-stepper-group">
+                            <div class="wi-stepper-step">
+                                <div class="wi-stepper-chip mdl-color--primary">2</div>
+                                <span class="wi-stepper-title">Compléter l'annonce</span>
+                            </div>
+                            <div class="wi-stepper-separator"></div>
+                        </div>
+                        <div class="wi-stepper-group">
+                            <div class="wi-stepper-step">
+                                <div class="wi-stepper-chip mdl-color--primary">3</div>
+                                <span class="wi-stepper-title">Step 3</span>
+                            </div>
+                            <div class="wi-stepper-separator"></div>
+                        </div>
+                    </div>
+                    <!-- Content Steppers -->
+                    <div class="wi-stepper-content">
+                        <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                            <div class="mdl-tabs__tab-bar">
+                                {% for category in categories %}
+                                    <a href="#category-{{ category.id }}-panel" data-id="{{ category.id }}" class="mdl-tabs__tab">{{ category.name }}</a>
+                                {% endfor %}
+                            </div>
+                            {% for category in categories %}
+                                <div class="mdl-tabs__panel" id="category-{{ category.id }}-panel">
+                                    <div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate loader width-100 display-none"></div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <input type="hidden" id="selected-subcategories" />
+                    </div>
+                    <div class="wi-stepper-content">
+                        <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active display-none" id="loader-form"></div>
+                    </div>
+                    <div class="wi-stepper-content">
+                        3
+                    </div>
+                    <!-- Footer Steppers -->
+                    <div class="wi-stepper-footer">
+                        <button type="button" disabled="" class="mdl-button mdl-js-button mdl-js-ripple-effect back">
+                            back
+                        </button>
+                        <div class="pull-right">
+                            <button type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                                Cancel
+                            </button>
+                            <button type="button" disabled class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect next">
+                                Continue
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
+        <div class="mdl-cell--2-col-desktop"></div>
     </div>
 {% endblock %}
-{% block home_javascripts %}
-    <script>
-        $(function () {
-            $('.menu-link').click(function (e) {
-                var result;
-                var id = e.currentTarget.id;
-                if (!$('#'+ id +'.menu-link').hasClass('load')) {result = getSubcategories(id);}
-                if (result) {$(this).addClass('load');}
-            });
-        });
-
-        function getSubcategories(id) {
-            $.ajax({
-                type      : 'post',
-                url       : Routing.generate('GetSubcategoriesById', {id: id}),
-                //url: 'http://wolfi.local/app_dev.php/Home/GetSubcategories/' + id,
-                beforeSend: function () {
-                    $("#progress-" + id + ".mdl-progress").show();
-                },
-                error     : function (xhr, textStatus, error) {
-                    $("#progress-" + id + ".mdl-progress").hide();
-                    $("#" + id + " .subcategories").append(error);
-                },
-                success   : function (data) {
-                    $.each(data.Subcategories, function (index, value) {
-                        $("#" + id + " .subcategories").append('<div class="subcategory" id="subcategory-' + index + '">' + value + '</div>');
-                    });
-                    $("#progress-" + id + ".mdl-progress").hide();
-                }
-            });
-            return true;
-        }
-
-        //Open category
-        function openMenu(menu) {
-            menu.classList.add('open');
-            menu.removeEventListener('click', menu.listener, false);
-            menu.removeEventListener('touchstart', menu.listener, false);
-            var header = menu.querySelector('header');
-            header.listener = closeMenu.bind(null, menu, header);
-            header.addEventListener('click', header.listener, false);
-            header.addEventListener('touchstart', header.listener, false);
-            return header.listener;
-        }
-        function closeMenu(menu, header) {
-            menu.classList.remove('open');
-            header.removeEventListener('click', header.listener, false);
-            header.removeEventListener('touchstart', header.listener, false);
-            setTimeout(function () {
-                addMenuListener(menu);
-            }, 100);
-        }
-        function addMenuListener(node) {
-            node.listener = openMenu.bind(null, node);
-            node.addEventListener('click', node.listener, false);
-            node.addEventListener('touchstart', node.listener, false);
-        }
-        var links = document.querySelectorAll('.menu-link');
-        [].forEach.call(links, function (node) {
-            addMenuListener(node);
-        });
-        //Open category
-    </script>
+{% block home_scripts %}
+    <script src="{{ asset('bundles/home/js/render-stepper.js') }}"></script>
 {% endblock %}
 

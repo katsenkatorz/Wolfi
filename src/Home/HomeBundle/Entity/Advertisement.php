@@ -56,14 +56,6 @@ class Advertisement
     private $dateAdd;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="duration", type="time")
-     */
-    private $duration;
-
-
-    /**
      * Get id
      *
      * @return integer
@@ -169,28 +161,6 @@ class Advertisement
         return $this->dateAdd;
     }
 
-    /**
-     * Set duration
-     *
-     * @param \DateTime $duration
-     *
-     * @return Advertisement
-     */
-    public function setDuration($duration)
-    {
-        $this->duration = $duration;
 
-        return $this;
-    }
-
-    /**
-     * Get duration
-     *
-     * @return \DateTime
-     */
-    public function getDuration()
-    {
-        return $this->duration;
-    }
 }
 

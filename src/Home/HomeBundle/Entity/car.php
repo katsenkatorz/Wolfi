@@ -216,5 +216,120 @@ class Car
     {
         return $this->mileage;
     }
+
+      /**
+       * Set Advertisement
+       *
+       * @param \Home\HomeBundle\Entity\Advertisement $advertisement
+       * @return Car
+       */
+      public function setImage(\Home\HomeBundle\Entity\Advertisement $advertisement)
+      {
+            $this->Advertisement = $advertisement;
+
+            return $this;
+      }
+
+      /**
+       * Get Advertisement
+       *
+       * @return \Home\HomeBundle\Entity\Advertisement
+       */
+      public function getAdvertisement()
+      {
+            return $this->Advertisement;
+      }
+
+	/**
+	 * Set Fuel
+	 *
+	 * @param \Administration\AdminBundle\Entity\Fuel $fuel
+	 * @return Car
+	 */
+	public function setFuel(\Administration\AdminBundle\Entity\Fuel $fuel)
+	{
+		$this->Fuel = $fuel;
+
+		return $this;
+	}
+
+	/**
+	 * Get Fuel
+	 *
+	 * @return \Administration\AdminBundle\Entity\Fuel
+	 */
+	public function getFuel()
+	{
+		return $this->Fuel;
+	}
+
+	/**
+	 * Set Transmission
+	 *
+	 * @param \Administration\AdminBundle\Entity\Transmission $transmission
+	 * @return Car
+	 */
+	public function setTransmission(\Administration\AdminBundle\Entity\Transmission $transmission)
+	{
+		$this->Transmission = $transmission;
+
+		return $this;
+	}
+
+	/**
+	 * Get Transmission
+	 *
+	 * @return \Administration\AdminBundle\Entity\Transmission
+	 */
+	public function getTransmission()
+	{
+		return $this->Transmission;
+	}
+
+	/**
+	 * Set Body
+	 *
+	 * @param \Administration\AdminBundle\Entity\Body $body
+	 * @return Car
+	 */
+	public function setBody(\Administration\AdminBundle\Entity\Body $body)
+	{
+		$this->Body = $body;
+
+		return $this;
+	}
+
+	/**
+	 * Get Body
+	 *
+	 * @return \Administration\AdminBundle\Entity\Body
+	 */
+	public function getBody()
+	{
+		return $this->Body;
+	}
+
+	/**
+	 * Set Make
+	 *
+	 * @param \Administration\AdminBundle\Entity\Make $make
+	 * @return Car
+	 */
+	public function setMake(\Administration\AdminBundle\Entity\Make $make)
+	{
+		$this->Make = $make;
+
+		return $this;
+	}
+
+	/**
+	 * Get Make
+	 *
+	 * @return \Administration\AdminBundle\Entity\Make
+	 */
+	public function getMake()
+	{
+		return $this->Make;
+	}
 }
 

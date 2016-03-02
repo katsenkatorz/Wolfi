@@ -1,0 +1,21 @@
+
+Create: Création
+crud:
+    car:
+        label:
+          Year: Année
+          Model: Modèle
+          Engine size: Moteur
+          Colour: Couleur
+          Mileage: Kilométrage
+          Fuel: Carburant
+          Transmission: Boîte de vitesses
+          Body: Carrosserie
+          Make: Marque
+    Advertisement:
+        table: ""
+        label:
+            Title: Titre
+            Price: Prix
+            Description: Description
+            Date add: Date d'ajout

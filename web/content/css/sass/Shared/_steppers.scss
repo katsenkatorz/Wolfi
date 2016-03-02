@@ -1,0 +1,62 @@
+@import "variables";
+
+.wi-stepper{
+   > .wi-stepper-header{
+      min-height:$size-header;
+      padding:0 24px;
+      > .wi-stepper-group{
+         min-height:$size-header;
+         float:left;
+         position:relative;
+         width:33.33%;
+         > .wi-stepper-step{
+            padding:$padding-group;
+            position:absolute;
+            z-index:5;
+            background:#fff;
+            > .wi-stepper-chip{
+               display:inline-block;
+               color:#fff;
+               min-width:$size-chip;
+               height:$size-chip;
+               line-height: $size-chip;
+               border-radius:50%;
+               position:relative;
+               text-align:center;
+            }
+            > .wi-stepper-title{
+               display:inline-block;
+               padding:0 8px;
+               font-weight:bold;
+               font-size:12px;
+            }
+         }
+
+         > .wi-stepper-separator{
+            border-top: 1px solid #ccc;
+            position:absolute;
+            top:50%;
+            width:95%;
+            z-index:1;
+         }
+
+      }
+   }
+   > .wi-stepper-content{
+      min-height:300px;
+      margin:16px 24px;
+      position: relative;
+      #loader-form {
+         position: absolute;
+         top: 50%;
+         left:50%;
+         margin-left:-14px;
+         margin-top: -14px;
+         text-align:left;
+      }
+   }
+   > .wi-stepper-footer{
+      margin:16px 24px;
+      min-height:$size-footer;
+   }
+}

@@ -1,0 +1,30 @@
+car:
+    path:     /
+    defaults: { _controller: "HomeBundle:Car:index" }
+
+car_show:
+    path:     /{id}/show
+    defaults: { _controller: "HomeBundle:Car:show" }
+
+car_new:
+    path:     /new
+    defaults: { _controller: "HomeBundle:Car:new" }
+
+car_create:
+    path:     /create
+    defaults: { _controller: "HomeBundle:Car:create" }
+    methods:  POST
+
+car_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HomeBundle:Car:edit" }
+
+car_update:
+    path:     /{id}/update
+    defaults: { _controller: "HomeBundle:Car:update" }
+    methods:  [POST, PUT]
+
+car_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HomeBundle:Car:delete" }
+    methods:  [POST, DELETE]
