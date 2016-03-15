@@ -3,6 +3,17 @@
 {% block title %}{{ parent() }} - Admin {% endblock %}
 
 {% block body %}
-        {% block admin_body %}
-        {% endblock %}
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+        {% include("AdminBundle:shared:_header.html.twig") %}
+        <main class="mdl-layout__content ">
+                <div class="page-content">
+                        <div class="mdl-grid">
+                                <div class="mdl-cell mdl-cell--12-col">
+                                        {% block admin_body %}
+                                        {% endblock %}
+                                </div>
+                        </div>
+                </div>
+        </main>
+</div>
 {% endblock %}

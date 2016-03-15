@@ -2,26 +2,15 @@
 <html>
 <head>
     <meta charset="UTF-8" />
-    <title>{% block title %}Project Wolfi{% endblock %}</title>
+    <title>{% block title %}Admin Wolfi{% endblock %}</title>
     {% include("::shared/_stylesheets.html.twig") %}
     {% block stylesheets %}{% endblock %}
     <link href="{{ asset('favicon.ico') }}" rel="icon" type="image/x-icon" />
 </head>
 <body class="mdl-color--blue-grey-50">
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-    {% include("::shared/admin/_headerAdmin.html.twig") %}
-    <main class="mdl-layout__content ">
-        <div class="page-content">
-            <div class="mdl-grid">
-                <div class="mdl-cell mdl-cell--12-col">
-                    {% block body %}{% endblock %}
-                </div>
-            </div>
-        </div>
-    </main>
-</div>
-{% include("::shared/_scripts.html.twig") %}
-{% block javascripts %}{% endblock %}
+    {% block body %}{% endblock %}
+    {% include("::shared/_scripts.html.twig") %}
+    {% block javascripts %}{% endblock %}
 </body>
 </html>
 
