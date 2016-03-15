@@ -1,17 +1,26 @@
 {% extends "::layout/layoutHome.html.twig" %}
 
 {% block title %}{{ parent() }} - Home {% endblock %}
+
 {% block page_title %}
-        {% block home_page_title %}
-        {% endblock %}
+    {% block home_page_title %}
+    {% endblock %}
 {% endblock %}
+
 {% block body %}
-        {% block home_body %}
-        {% endblock %}
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    {% include "HomeBundle:shared:_header.html.twig"  with {page_title: block('page_title')} %}
+    <main class="mdl-layout__content ">
+        <div class="page-content">
+            {% block home_body %}
+            {% endblock %}
+        </div>
+    </main>
+</div>
 {% endblock %}
 {% block javascripts %}
-        {% block home_javascripts %}
-        {% endblock %}
+    {% block home_javascripts %}
+    {% endblock %}
 {% endblock %}
 
 {% block scripts %}

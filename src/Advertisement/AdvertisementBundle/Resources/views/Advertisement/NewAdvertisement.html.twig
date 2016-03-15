@@ -1,8 +1,8 @@
-{% extends 'HomeBundle::layout.html.twig' %}
-{% block home_page_title %}
+{% extends 'AdvertisementBundle::layout.html.twig' %}
+{% block advert_page_title %}
     Ajouter une annonce
 {% endblock %}
-{% block home_body %}
+{% block advert_body %}
     <div class="mdl-grid">
         <div class="mdl-cell--2-col-desktop"></div>
         <div class="mdl-cell--8-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-color--white mdl-shadow--3dp">
@@ -77,7 +77,7 @@
         <div class="mdl-cell--2-col-desktop"></div>
     </div>
 {% endblock %}
-{% block home_scripts %}
+{% block advert_scripts %}
     <script src="{{ asset('bundles/home/js/render-stepper.js') }}"></script>
 {% endblock %}
 

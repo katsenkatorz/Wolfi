@@ -19,9 +19,9 @@ class AppKernel extends Kernel
             new Home\HomeBundle\HomeBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new User\UserBundle\UserBundle(),
-            new FrontOffice\AppBundle\AppBundle(),
             new Administration\AdminBundle\AdminBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new Advertisement\AdvertisementBundle\AdvertisementBundle(),
         );
 
 

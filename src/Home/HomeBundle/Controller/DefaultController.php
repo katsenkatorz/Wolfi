@@ -17,10 +17,6 @@
          */
         public function indexAction()
         {
-            //$user = $this->getUser();
-            // var_dump($user);
             return $this->render('HomeBundle:Default:index.html.twig');
-
-
         }
     }

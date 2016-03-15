@@ -1,0 +1,29 @@
+{% extends "::layout/layoutAdvert.html.twig" %}
+
+{% block title %}{{ parent() }} - Home {% endblock %}
+
+{% block page_title %}
+    {% block advert_page_title %}
+    {% endblock %}
+{% endblock %}
+
+{% block body %}
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        {% include "AdvertisementBundle:shared:_header.html.twig"  with {page_title: block('page_title')} %}
+        <main class="mdl-layout__content ">
+            <div class="page-content">
+                {% block advert_body %}
+                {% endblock %}
+            </div>
+        </main>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {% block advert_javascripts %}
+    {% endblock %}
+{% endblock %}
+
+{% block scripts %}
+    {% block advert_scripts %}
+    {% endblock %}
+{% endblock %}

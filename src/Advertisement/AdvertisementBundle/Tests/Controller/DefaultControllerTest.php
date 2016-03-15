@@ -1,6 +1,6 @@
 <?php
 
-namespace FrontOffice\AppBundle\Tests\Controller;
+namespace Advertisement\AdvertisementBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

@@ -1,3 +1,7 @@
+advertisement:
+    resource: "@AdvertisementBundle/Resources/config/routing.yml"
+    prefix:   /Annonce
+
 admin:
     resource: "@AdminBundle/Resources/config/routing.yml"
     prefix:   /admin/
@@ -8,10 +12,6 @@ user:
 
 home:
     resource: "@HomeBundle/Resources/config/routing.yml"
-    prefix:   /Home/
-
-app:
-    resource: "@AppBundle/Resources/config/routing.yml"
     prefix:   /
 
 fos_user:

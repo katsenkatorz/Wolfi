@@ -1,0 +1,55 @@
+<header class="mdl-layout__header mdl-layout__header--waterfall mdl-color--blue-grey-800 z-index999">
+    <div class="mdl-layout-icon"></div>
+    <div class="mdl-layout__header-row wi-header">
+        <a href="{{ path('home_homepage') }}" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
+            Wolfi
+        </a>
+
+        <div class="mdl-layout-spacer wi-search">
+            <div id="wi-search-wrapper">
+                <i class="material-icons">search</i>
+                <input id="wi-search-input" placeholder="Rechercher" />
+
+                <div id="wi-autocomplete-wrapper">
+                    <div id="wi-autocomplete-content">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            {% include 'UserBundle:Shared:_userConnectedOn.html.twig' %}
+        {% else %}
+            {% include 'UserBundle:Shared:_userConnectedOff.html.twig' %}
+        {% endif %}
+    </div>
+
+    <div class="mdl-layout__header-row mdl-color--blue-grey-700">
+        {% if page_title is not empty and page_title is not null %}
+            <h4>{{ page_title }}</h4>
+        {% endif %}
+    </div>
+
+</header>
+<div class="mdl-shadow--8dp header-menu mdl-color--blue-grey-700">
+    <!-- Navigation -->
+    <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="">Link</a>
+    </nav>
+    <a href="{{ path('NewAdvertisement') }}" class="float-btn morph mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--6dp mdl-color--accent" id="add">
+        <i class="material-icons norm">add</i>
+        <i class="material-icons alt">mode_edit</i>
+    </a>
+
+    <div class="mdl-tooltip mdl-tooltip--large" for="add">
+        Ajouter une annonce
+    </div>
+</div>
+<div class="mdl-layout__drawer z-index1000">
+    <span class="mdl-layout-title">Simple Layout</span>
+    <nav class="mdl-navigation">
+        <a class="mdl-navigation__link menu-toggleable" href="#">
+            Lien 1
+        </a>
+    </nav>
+</div>

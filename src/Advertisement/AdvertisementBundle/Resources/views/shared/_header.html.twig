@@ -17,7 +17,11 @@
                 </div>
             </div>
         </div>
-        {% include 'UserBundle:Shared:_userConnectedOn.html.twig' %}
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            {% include 'UserBundle:Shared:_userConnectedOn.html.twig' %}
+        {% else %}
+            {% include 'UserBundle:Shared:_userConnectedOff.html.twig' %}
+        {% endif %}
     </div>
 
     <div class="mdl-layout__header-row mdl-color--blue-grey-700">

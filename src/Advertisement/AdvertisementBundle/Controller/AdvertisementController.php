@@ -1,6 +1,6 @@
 <?php
 
-namespace Home\HomeBundle\Controller;
+namespace Advertisement\AdvertisementBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 /**
  * Class AdvertisementController
  *
- * @package Home\HomeBundle\Controller
+ * @package Advertisement\AdvertisementBundle\Controller;
  */
 class AdvertisementController extends Controller
 {
@@ -22,7 +22,7 @@ class AdvertisementController extends Controller
 		$categories    = $this->container->get('home_home.services.datamanagement')->getCategories();
 		$Subcategories = $this->container->get('home_home.services.datamanagement')->getSubcategoriesAndCategories();
 
-		return $this->render('HomeBundle:Advertisement:NewAdvertisement.html.twig', [ 'categories' => $categories, 'Subcategories' => $Subcategories]);
+		return $this->render('AdvertisementBundle:Advertisement:NewAdvertisement.html.twig', [ 'categories' => $categories, 'Subcategories' => $Subcategories]);
 	}
 
 

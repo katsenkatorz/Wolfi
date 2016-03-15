@@ -6,12 +6,3 @@ home_homepage:
     path:     /
     defaults: { _controller: HomeBundle:Default:index }
 
-NewAdvertisement:
-    path:     /NewAdvertisement
-    defaults: { _controller: HomeBundle:Advertisement:NewAdvertisement }
-
-GetSubcategoriesById:
-    path:     /GetSubcategoriesById/{id}
-    defaults: { _controller: HomeBundle:Advertisement:GetSubcategoriesById }
-    options:
-        expose: true

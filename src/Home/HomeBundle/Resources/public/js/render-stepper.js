@@ -41,6 +41,9 @@ $(function () {
                         $.getScript( "../../../content/js/material-design/manager-crud-material.js" );
                     });
                     break;
+                case 2:
+                    alert("2");
+                    break;
             }
         }
         $('.back').prop("disabled", (current > 0 ? false : true));

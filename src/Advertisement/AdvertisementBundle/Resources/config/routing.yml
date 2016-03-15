@@ -1,0 +1,13 @@
+advertisement_homepage:
+    path:     /
+    defaults: { _controller: AdvertisementBundle:Default:index }
+
+NewAdvertisement:
+    path:     /Creation
+    defaults: { _controller: AdvertisementBundle:Advertisement:NewAdvertisement }
+
+GetSubcategoriesById:
+    path:     /GetSubcategoriesById/{id}
+    defaults: { _controller: AdvertisementBundle:Advertisement:GetSubcategoriesById }
+    options:
+        expose: true
