@@ -2,15 +2,13 @@
 
 {% block title %}{{ parent() }} - Home {% endblock %}
 
-{% block page_title %}
-    {% block advert_page_title %}
-    {% endblock %}
-{% endblock %}
-
 {% block body %}
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-        {% include "AdvertisementBundle:shared:_header.html.twig"  with {page_title: block('page_title')} %}
-        <main class="mdl-layout__content ">
+        {% include "AdvertisementBundle:shared:_header.html.twig" %}
+        <div class="wi-ribbon mdl-color--blue-grey-700">
+        </div>
+
+        <main class="mdl-layout__content wi-main-advert">
             <div class="page-content">
                 {% block advert_body %}
                 {% endblock %}

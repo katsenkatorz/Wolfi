@@ -1,8 +1,9 @@
-@import 'Shared/_helpers';
-@import 'Shared/_colors';
-@import 'Shared/_mixins';
-@import 'Shared/_header';
+@import 'Shared/helpers';
+@import 'Shared/colors';
+@import 'Shared/mixins';
+@import 'Shared/header';
 @import "Shared/steppers";
+@import "Shared/ribbon";
 html, body{
    font-family:"Roboto", "Helvetica", "Arial", sans-serif;
 }
