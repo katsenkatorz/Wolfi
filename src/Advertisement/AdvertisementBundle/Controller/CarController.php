@@ -1,6 +1,6 @@
 <?php
 
-namespace Home\HomeBundle\Controller;
+namespace Advertisement\AdvertisementBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -25,7 +25,7 @@ class CarController extends Controller
 
         $entities = $em->getRepository('HomeBundle:Car')->findAll();
 
-        return $this->render('HomeBundle:Car:index.html.twig', array(
+        return $this->render('AdvertisementBundle:Car:index.html.twig', array(
             'entities' => $entities,
         ));
     }
@@ -47,7 +47,7 @@ class CarController extends Controller
             return $this->redirect($this->generateUrl('car_show', array('id' => $entity->getId())));
         }
 
-        return $this->render('HomeBundle:Car:new.html.twig', array(
+        return $this->render('AdvertisementBundle:Car:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
@@ -78,7 +78,7 @@ class CarController extends Controller
         $entity = new Car();
         $form   = $this->createCreateForm($entity);
 
-        return $this->render('HomeBundle:Car:new.html.twig', array(
+        return $this->render('AdvertisementBundle:Car:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
@@ -100,7 +100,7 @@ class CarController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('HomeBundle:Car:show.html.twig', array(
+        return $this->render('AdvertisementBundle:Car:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -123,7 +123,7 @@ class CarController extends Controller
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('HomeBundle:Car:edit.html.twig', array(
+        return $this->render('AdvertisementBundle:Car:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -169,7 +169,7 @@ class CarController extends Controller
             return $this->redirect($this->generateUrl('car_edit', array('id' => $id)));
         }
 
-        return $this->render('HomeBundle:Car:edit.html.twig', array(
+        return $this->render('AdvertisementBundle:Car:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

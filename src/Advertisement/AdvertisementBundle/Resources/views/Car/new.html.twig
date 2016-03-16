@@ -1,6 +1,6 @@
-{% extends 'HomeBundle::layout.html.twig' %}
+{% extends 'AdvertisementBundle::layout.html.twig' %}
 
-{% block home_body -%}
+{% block advert_body -%}
     <div id="form-advertisement">
         <h1>Car creation</h1>
         {{ form_start(form) }}
@@ -8,6 +8,6 @@
         {{ form_end(form) }}
     </div>
 {% endblock %}
-{% block home_scripts %}
+{% block advert_scripts %}
     <script src="{{ asset('content/js/material-design/manager-crud-material.js') }}"></script>
 {% endblock %}

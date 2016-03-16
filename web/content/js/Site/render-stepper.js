@@ -37,7 +37,7 @@ $(function () {
                 case 1: //step 2 because :eq() start with 0 index
                     $("#loader-form").removeClass("display-none");
                     var selectedSub = $("#selected-subcategories").val();
-                    stepContent.eq(current).load('http://wolfi.local/app_dev.php/Home/car/new #form-advertisement', function(){
+                    stepContent.eq(current).load('http://wolfi.local/app_dev.php/Annonce/car/new #form-advertisement', function(){
                         $.getScript( "../../../content/js/material-design/manager-crud-material.js" );
                     });
                     break;

@@ -1,0 +1,30 @@
+car:
+    path:     /
+    defaults: { _controller: "AdvertisementBundle:Car:index" }
+
+car_show:
+    path:     /{id}/show
+    defaults: { _controller: "AdvertisementBundle:Car:show" }
+
+car_new:
+    path:     /new
+    defaults: { _controller: "AdvertisementBundle:Car:new" }
+
+car_create:
+    path:     /create
+    defaults: { _controller: "AdvertisementBundle:Car:create" }
+    methods:  POST
+
+car_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AdvertisementBundle:Car:edit" }
+
+car_update:
+    path:     /{id}/update
+    defaults: { _controller: "AdvertisementBundle:Car:update" }
+    methods:  [POST, PUT]
+
+car_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AdvertisementBundle:Car:delete" }
+    methods:  [POST, DELETE]

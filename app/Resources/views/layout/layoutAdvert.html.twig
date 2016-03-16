@@ -2,6 +2,13 @@
 <html>
 <head>
     <meta charset="UTF-8" />
+
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="{{ 'site'|trans }}">
+    <meta name="application-name" content="{{ 'site'|trans }}">
+
     <title>{% block title %}Annonces Wolfi{% endblock %}</title>
     {% include("::shared/_stylesheets.html.twig") %}
     {% block stylesheets %}{% endblock %}

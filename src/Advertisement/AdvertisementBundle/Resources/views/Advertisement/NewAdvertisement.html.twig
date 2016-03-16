@@ -5,7 +5,7 @@
 {% block advert_body %}
     <div class="mdl-grid">
         <div class="mdl-cell--2-col-desktop"></div>
-        <div class="mdl-cell--8-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-color--white mdl-shadow--3dp">
+        <div class="marge-fix mdl-cell--8-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-color--white mdl-shadow--3dp">
             <form class="form" action="#">
                 <!-- Steppers -->
                 <div class="wi-stepper">
@@ -74,10 +74,9 @@
                 </div>
             </form>
         </div>
-        <div class="mdl-cell--2-col-desktop"></div>
     </div>
 {% endblock %}
 {% block advert_scripts %}
-    <script src="{{ asset('bundles/home/js/render-stepper.js') }}"></script>
+    <script src="{{ asset('content/js/Site/render-stepper.js') }}"></script>
 {% endblock %}
 
