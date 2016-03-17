@@ -1,4 +1,17 @@
 {% extends "::layout/layout.html.twig" %}
+
+{% block title %}{{ parent() }} - User {% endblock %}
+
 {% block body %}
-    {{ block('fos_user_content') }}
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        {% include "UserBundle:Shared:_header.html.twig" %}
+        <div class="wi-ribbon mdl-color--blue-grey-700">
+        </div>
+
+        <main class="mdl-layout__content wi-main-advert">
+            <div class="page-content">
+                {{ block('fos_user_content') }}
+            </div>
+        </main>
+    </div>
 {% endblock %}

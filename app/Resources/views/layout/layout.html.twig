@@ -1,28 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8"/>
-    <title>{% block title %}Project Wolfi{% endblock %}</title>
-    {% include("::shared/_stylesheets.html.twig") %}
-    {% block stylesheets %}{% endblock %}
-    <link href="{{ asset('favicon.ico') }}" rel="icon" type="image/x-icon"/>
-  </head>
-  <body class="mdl-color--blue-grey-50">
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout__header--waterfall">
-      {% include("::shared/_header.html.twig") %}
-      <main class="mdl-layout__content ">
-        <div class="page-content">
-          <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell--12-col">
-              {% block body %}{% endblock %}
-            </div>
-          </div>
-        </div>
-      </main>
-      {% include("::shared/_footer.html.twig") %}
-    </div>
+<head>
+  <meta charset="UTF-8" />
 
-    {% include("::shared/_scripts.html.twig") %}
-    {% block javascripts %}{% endblock %}
-  </body>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no, maximum-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="{{ 'site'|trans }}">
+  <meta name="application-name" content="{{ 'site'|trans }}">
+
+  <title>{% block title %}Wolfi{% endblock %}</title>
+  {% include("::shared/_stylesheets.html.twig") %}
+  {% block stylesheets %}{% endblock %}
+  {% block scripts %}{% endblock %}
+  <link href="{{ asset('favicon.ico') }}" rel="icon" type="image/x-icon" />
+</head>
+<body class="mdl-color--blue-grey-50">
+  {% block body %}{% endblock %}
+  {% include("::shared/_scripts.html.twig") %}
+  {% block javascripts %}{% endblock %}
+</body>
 </html>
