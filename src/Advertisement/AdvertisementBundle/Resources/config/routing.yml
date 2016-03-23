@@ -1,8 +1,6 @@
 home_car:
     resource: "@AdvertisementBundle/Resources/config/routing/car.yml"
     prefix:   /car
-    options:
-            expose: true
 
 advertisement_homepage:
     path:     /

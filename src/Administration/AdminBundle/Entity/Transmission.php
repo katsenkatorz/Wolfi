@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Transmission
  *
- * @ORM\Table()
+ * @ORM\Table("Transmission")
  * @ORM\Entity(repositoryClass="Administration\AdminBundle\Entity\Repository\TransmissionRepository")
  */
 class Transmission

@@ -1,6 +1,6 @@
 <?php
 
-namespace Home\HomeBundle\Entity\Repository;
+namespace Advertisement\AdvertisementBundle\Repository;
 
 /**
  * AdvertisementRepository

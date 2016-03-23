@@ -1,14 +1,14 @@
 <?php
 
-namespace Home\HomeBundle\Entity;
+namespace Advertisement\AdvertisementBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Advertisement
  *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="Home\HomeBundle\Entity\Repository\AdvertisementRepository")
+ * @ORM\Table("Advertisement")
+ * @ORM\Entity(repositoryClass="Advertisement\AdvertisementBundle\Repository\AdvertisementRepository")
  */
 class Advertisement
 {
@@ -162,5 +162,28 @@ class Advertisement
     }
 
 
-}
 
+    /**
+     * Set subcategory
+     *
+     * @param \Administration\AdminBundle\Entity\Subcategory $subcategory
+     *
+     * @return Advertisement
+     */
+    public function setSubcategory(\Administration\AdminBundle\Entity\Subcategory $subcategory = null)
+    {
+        $this->Subcategory = $subcategory;
+
+        return $this;
+    }
+
+    /**
+     * Get subcategory
+     *
+     * @return \Administration\AdminBundle\Entity\Subcategory
+     */
+    public function getSubcategory()
+    {
+        return $this->Subcategory;
+    }
+}

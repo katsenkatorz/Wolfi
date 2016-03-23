@@ -38,11 +38,24 @@ $(function () {
             stepContent.not(':eq(' + current + ')').hide();
             switch (current) {
                 case 1: //step 2 because :eq() start with 0 index
-                    $("#loader-form").removeClass("display-none");
-                    var selectedSub = $("#selected-subcategories").val();
-                    stepContent.eq(current).load('http://wolfi.local/app_dev.php/Annonce/car/new #form-advertisement', function(){
-                        $.getScript( "../../../content/js/material-design/manager-crud-material.js" );
-                    });
+                    // $("#loader-form").removeClass("display-none");
+                    // var selectedSub = $("#selected-subcategories").val();
+                    // stepContent.eq(current).load('http://wolfi.local/app_dev.php/Annonce/car/new #form-advertisement', function(){
+                    //     $.getScript( "../../../content/js/material-design/manager-crud-material.js" );
+                    // });
+                    $.ajax({
+                            type: "POST",
+                            dataType: 'json',
+                            url: Routing.generate('ajax'),
+                            async: false //you won't need that if nothing in your following code is dependend of the result
+                        })
+                        .done(function(response){
+                            template = response;
+                            stepContent.eq(current).html(template.html); //Change the html of the div with the id = "your_div"
+                        })
+                        .fail(function(jqXHR, textStatus, errorThrown){
+                            alert('Error : ' + errorThrown);
+                        });
                     break;
                 case 2:
                     alert("2");

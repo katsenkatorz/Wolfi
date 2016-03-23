@@ -5,8 +5,8 @@ namespace Advertisement\AdvertisementBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use Home\HomeBundle\Entity\Car;
-use Home\HomeBundle\Form\CarType;
+use Advertisement\AdvertisementBundle\Entity\Car;
+use Advertisement\AdvertisementBundle\Form\CarType;
 
 /**
  * Car controller.
@@ -14,7 +14,6 @@ use Home\HomeBundle\Form\CarType;
  */
 class CarController extends Controller
 {
-
     /**
      * Lists all Car entities.
      *
@@ -23,64 +22,34 @@ class CarController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('HomeBundle:Car')->findAll();
+        $cars = $em->getRepository('AdvertisementBundle:Car')->findAll();
 
-        return $this->render('AdvertisementBundle:Car:index.html.twig', array(
-            'entities' => $entities,
+        return $this->render('AdvertisementBundle:car:index.html.twig', array(
+            'cars' => $cars,
         ));
     }
+
     /**
      * Creates a new Car entity.
      *
      */
-    public function createAction(Request $request)
+    public function newAction(Request $request)
     {
-        $entity = new Car();
-        $form = $this->createCreateForm($entity);
+        $car = new Car();
+        $form = $this->createForm('Advertisement\AdvertisementBundle\Form\CarType', $car);
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
+            $em->persist($car);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('car_show', array('id' => $entity->getId())));
+            return $this->redirectToRoute('car_show', array('id' => $car->getId()));
         }
 
-        return $this->render('AdvertisementBundle:Car:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        ));
-    }
-
-    /**
-     * Creates a form to create a Car entity.
-     *
-     * @param Car $entity The entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createCreateForm(Car $entity)
-    {
-        $form = $this->createForm(CarType::class, $entity, ['action' => $this->generateUrl('car_create'), 'method' => 'POST',]);
-
-        $form->add('submit', 'submit', array('label' => 'Create'));
-
-        return $form;
-    }
-
-    /**
-     * Displays a form to create a new Car entity.
-     *
-     */
-    public function newAction()
-    {
-        $entity = new Car();
-        $form   = $this->createCreateForm($entity);
-
-        return $this->render('AdvertisementBundle:Car:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+        return $this->render('AdvertisementBundle:car:new.html.twig', array(
+            'car' => $car,
+            'form' => $form->createView(),
         ));
     }
 
@@ -88,20 +57,12 @@ class CarController extends Controller
      * Finds and displays a Car entity.
      *
      */
-    public function showAction($id)
+    public function showAction(Car $car)
     {
-        $em = $this->getDoctrine()->getManager();
+        $deleteForm = $this->createDeleteForm($car);
 
-        $entity = $em->getRepository('HomeBundle:Car')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Car entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-
-        return $this->render('AdvertisementBundle:Car:show.html.twig', array(
-            'entity'      => $entity,
+        return $this->render('AdvertisementBundle:car:show.html.twig', array(
+            'car' => $car,
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -110,108 +71,57 @@ class CarController extends Controller
      * Displays a form to edit an existing Car entity.
      *
      */
-    public function editAction($id)
+    public function editAction(Request $request, Car $car)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('HomeBundle:Car')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Car entity.');
-        }
-
-        $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
-
-        return $this->render('AdvertisementBundle:Car:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-
-    /**
-    * Creates a form to edit a Car entity.
-    *
-    * @param Car $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createEditForm(Car $entity)
-    {
-        $form = $this->createForm(CarType::class, $entity, ['action' => $this->generateUrl('car_update', ['id' => $entity->getId()]), 'method' => 'PUT',]);
-
-        $form->add('submit', 'submit', array('label' => 'Update'));
-
-        return $form;
-    }
-    /**
-     * Edits an existing Car entity.
-     *
-     */
-    public function updateAction(Request $request, $id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('HomeBundle:Car')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Car entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
+        $deleteForm = $this->createDeleteForm($car);
+        $editForm = $this->createForm('Advertisement\AdvertisementBundle\Form\CarType', $car);
         $editForm->handleRequest($request);
 
-        if ($editForm->isValid()) {
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($car);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('car_edit', array('id' => $id)));
+            return $this->redirectToRoute('car_edit', array('id' => $car->getId()));
         }
 
-        return $this->render('AdvertisementBundle:Car:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+        return $this->render('AdvertisementBundle:car:edit.html.twig', array(
+            'car' => $car,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
     /**
      * Deletes a Car entity.
      *
      */
-    public function deleteAction(Request $request, $id)
+    public function deleteAction(Request $request, Car $car)
     {
-        $form = $this->createDeleteForm($id);
+        $form = $this->createDeleteForm($car);
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('HomeBundle:Car')->find($id);
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Car entity.');
-            }
-
-            $em->remove($entity);
+            $em->remove($car);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('car'));
+        return $this->redirectToRoute('car_index');
     }
 
     /**
-     * Creates a form to delete a Car entity by id.
+     * Creates a form to delete a Car entity.
      *
-     * @param mixed $id The entity id
+     * @param Car $car The Car entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm($id)
+    private function createDeleteForm(Car $car)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('car_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('car_delete', array('id' => $car->getId())))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
     }

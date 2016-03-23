@@ -1,14 +1,14 @@
 <?php
 
-namespace Home\HomeBundle\Entity;
+namespace Advertisement\AdvertisementBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * car
+ * Car
  *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="Home\HomeBundle\Entity\Repository\CarRepository")
+ * @ORM\Table("Car")
+ * @ORM\Entity(repositoryClass="Advertisement\AdvertisementBundle\Repository\CarRepository")
  */
 class Car
 {
@@ -23,7 +23,7 @@ class Car
 
     /**
      *
-     * @ORM\OneToOne(targetEntity="Home\HomeBundle\Entity\Advertisement", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="Advertisement\AdvertisementBundle\Entity\Advertisement", cascade={"persist"})
      */
     private $Advertisement;
 
@@ -35,7 +35,7 @@ class Car
 
     /**
      *
-     * @ORM\OneToOne(targetEntity="Administration\AdminBundle\Entity\Transmission", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Administration\AdminBundle\Entity\Transmission", cascade={"persist"})
      */
    private $Transmission;
 
@@ -220,10 +220,10 @@ class Car
       /**
        * Set Advertisement
        *
-       * @param \Home\HomeBundle\Entity\Advertisement $advertisement
+       * @param \Advertisement\AdvertisementBundle\Entity\Advertisement $advertisement
        * @return Car
        */
-      public function setImage(\Home\HomeBundle\Entity\Advertisement $advertisement)
+      public function setImage(\Advertisement\AdvertisementBundle\Entity\Advertisement $advertisement)
       {
             $this->Advertisement = $advertisement;
 
@@ -233,7 +233,7 @@ class Car
       /**
        * Get Advertisement
        *
-       * @return \Home\HomeBundle\Entity\Advertisement
+       * @return \Advertisement\AdvertisementBundle\Entity\Advertisement
        */
       public function getAdvertisement()
       {
@@ -331,5 +331,18 @@ class Car
 	{
 		return $this->Make;
 	}
-}
 
+    /**
+     * Set advertisement
+     *
+     * @param \Advertisement\AdvertisementBundle\Entity\Advertisement $advertisement
+     *
+     * @return Car
+     */
+    public function setAdvertisement(\Advertisement\AdvertisementBundle\Entity\Advertisement $advertisement = null)
+    {
+        $this->Advertisement = $advertisement;
+
+        return $this;
+    }
+}

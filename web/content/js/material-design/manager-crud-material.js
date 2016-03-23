@@ -6,9 +6,9 @@ $(function(){
     //      Input
     //  +------------------------------------------------------------------+
     //Add class on div if contains inputs
-    $("#form-advertisement form div").children("input").parent().addClass("mdl-textfield mdl-js-textfield mdl-textfield--floating-label");
+    $("#form-advertisement form div>div").children("input").parent().addClass("mdl-textfield mdl-js-textfield mdl-textfield--floating-label");
     //Add class on all input text
-    $("#form-advertisement form div").children("input").addClass("mdl-textfield__input");
+    $("#form-advertisement form div>div").children("input").addClass("mdl-textfield__input");
     //Add class on all label
     $("#form-advertisement form .mdl-textfield").children("label").addClass("mdl-textfield__label");
 
@@ -16,9 +16,9 @@ $(function(){
     //      Textarea
     //  +------------------------------------------------------------------+
     //Add class on div if contains textarea
-    $("#form-advertisement form div").children("textarea").parent().addClass("mdl-textfield mdl-js-textfield");
+    $("#form-advertisement form div>div").children("textarea").parent().addClass("mdl-textfield mdl-js-textfield");
     //Add class on all input text
-    $("#form-advertisement form div").children("textarea").addClass("mdl-textfield__input");
+    $("#form-advertisement form div>div").children("textarea").addClass("mdl-textfield__input");
     //Add class on all label
     $("#form-advertisement form .mdl-textfield").children("label").addClass("mdl-textfield__label");
 
@@ -36,7 +36,7 @@ $(function(){
     //      Button
     //  +------------------------------------------------------------------+
     //Add class on div if contains select
-    $("#form-advertisement form div").children("button").addClass("mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect");
+    $("#form-advertisement form div>div").children("button").addClass("mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect");
 
     componentHandler.upgradeAllRegistered();
 
