@@ -1,17 +1,17 @@
 {% extends "::layout/layout.html.twig" %}
 
-{% block title %}{{ parent() }} - Home {% endblock %}
+{% block title %}Nouvelle Annonce{% endblock %}
 
 {% block body %}
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         {% include "AdvertisementBundle:shared:_header.html.twig" %}
-        <div class="wi-ribbon mdl-color--blue-grey-700">
-        </div>
-
-        <main class="mdl-layout__content wi-main-advert">
-            <div class="page-content">
-                {% block advert_body %}
-                {% endblock %}
+        <main class="mdl-layout__content">
+            <div class="wi-ribbon mdl-color--blue-grey-700"></div>
+            <div class="wi-main-advert">
+                <div class="page-content">
+                    {% block advert_body %}
+                    {% endblock %}
+                </div>
             </div>
         </main>
     </div>

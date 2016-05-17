@@ -16,15 +16,15 @@ class CarType extends AbstractType
     {
         $builder
               ->add('Advertisement', AdvertisementType::class, ['label' => 'crud.Advertisement.table'])
-              ->add('year', null, ['label' => 'crud.car.label.Year'])
-              ->add('model', null, ['label' => 'crud.car.label.Model'])
-              ->add('engineSize', null, ['label' => 'crud.car.label.Engine size'])
-              ->add('colour', null, ['label' => 'crud.car.label.Colour'])
-              ->add('mileage', null, ['label' => 'crud.car.label.Mileage'])
-              ->add('Fuel', null, ['label' => 'crud.car.label.Fuel'])
-              ->add('Transmission', null, ['label' => 'crud.car.label.Transmission'])
-              ->add('Body', null, ['label' => 'crud.car.label.Body'])
-              ->add('Make', null, ['label' => 'crud.car.label.Make'])
+              ->add('year', null, ['label' => 'crud.car.label.Year', 'required' => true])
+              ->add('model', null, ['label' => 'crud.car.label.Model', 'required' => true])
+              ->add('engineSize', null, ['label' => 'crud.car.label.Engine size', 'required' => true])
+              ->add('colour', null, ['label' => 'crud.car.label.Colour', 'required' => true])
+              ->add('mileage', null, ['label' => 'crud.car.label.Mileage', 'required' => true])
+              ->add('Fuel', null, ['label' => 'crud.car.label.Fuel', 'required' => true])
+              ->add('Transmission', null, ['label' => 'crud.car.label.Transmission', 'required' => true])
+              ->add('Body', null, ['label' => 'crud.car.label.Body', 'required' => true])
+              ->add('Make', null, ['label' => 'crud.car.label.Make', 'required' => true])
         ;
     }
     

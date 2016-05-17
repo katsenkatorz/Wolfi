@@ -15,11 +15,11 @@ class AdvertisementType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('description')
-            ->add('price')
-            ->add('dateAdd')
-            ->add('Subcategory')
+            ->add('title',null, ['label' => 'crud.Advertisement.label.Title'])
+            ->add('description',null, ['label' => 'crud.Advertisement.label.Description'])
+            ->add('price',null, ['label' => 'crud.Advertisement.label.Price'])
+//            ->add('dateAdd',null, ['label' => 'crud.Advertisement.label.Date add'])
+//            ->add('Subcategory')
         ;
     }
 
@@ -29,8 +29,6 @@ class AdvertisementType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
-                                     'data_class' => 'Advertisement\AdvertisementBundle\Entity\Advertisement'
-                               ));
+        $resolver->setDefaults(array('data_class' => 'Advertisement\AdvertisementBundle\Entity\Advertisement',));
     }
 }

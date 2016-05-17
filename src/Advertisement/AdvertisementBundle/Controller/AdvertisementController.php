@@ -22,7 +22,7 @@ class AdvertisementController extends Controller
 		$categories    = $this->container->get('home_home.services.datamanagement')->getCategories();
 		$Subcategories = $this->container->get('home_home.services.datamanagement')->getSubcategoriesAndCategories();
 
-		return $this->render('AdvertisementBundle:Advertisement:NewAdvertisement.html.twig', [ 'categories' => $categories, 'Subcategories' => $Subcategories]);
+		return $this->render('AdvertisementBundle:Advertisement:NewAdvertisement.html.twig', ['categories' => $categories, 'Subcategories' => $Subcategories]);
 	}
 
 
@@ -34,7 +34,8 @@ class AdvertisementController extends Controller
 	 */
 	public function GetSubcategoriesByIdAction($id)
 	{
-		$Subcategories = $this->container->get('home_home.services.datamanagement')->getSubcategoriesByIdCategory($id);
+		$Subcategories      = $this->container->get('home_home.services.datamanagement')->getSubcategoriesByIdCategory($id);
+		$SubcategoriesArray = [];
 
 		foreach ($Subcategories as $subcategory)
 		{

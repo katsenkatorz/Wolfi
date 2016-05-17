@@ -15,3 +15,9 @@ GetSubcategoriesById:
     defaults: { _controller: AdvertisementBundle:Advertisement:GetSubcategoriesById }
     options:
         expose: true
+
+ajax:
+    pattern: /ajax
+    defaults: { _controller : "AdvertisementBundle:Car:new" }
+    options:
+        expose: true

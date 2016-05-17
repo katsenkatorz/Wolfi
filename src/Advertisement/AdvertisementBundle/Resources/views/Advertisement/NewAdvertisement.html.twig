@@ -30,13 +30,13 @@
                         <div class="wi-stepper-group">
                             <div class="wi-stepper-step">
                                 <div class="wi-stepper-chip mdl-color--primary">3</div>
-                                <span class="wi-stepper-title">Step 3</span>
+                                <span class="wi-stepper-title">Validation</span>
                             </div>
                             <div class="wi-stepper-separator"></div>
                         </div>
                     </div>
                     <!-- Content Steppers -->
-                    <div class="wi-stepper-content">
+                    <div class="wi-stepper-content" id="wi-step-1">
                         <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
                             <div class="mdl-tabs__tab-bar">
                                 {% for category in categories %}
@@ -51,23 +51,23 @@
                         </div>
                         <input type="hidden" id="selected-subcategories" />
                     </div>
-                    <div class="wi-stepper-content">
+                    <div class="wi-stepper-content display-none" id="wi-step-2">
                         <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active display-none" id="loader-form"></div>
                     </div>
-                    <div class="wi-stepper-content">
+                    <div class="wi-stepper-content display-none" id="wi-step-3">
                         3
                     </div>
                     <!-- Footer Steppers -->
                     <div class="wi-stepper-footer">
                         <button type="button" disabled="" class="mdl-button mdl-js-button mdl-js-ripple-effect back">
-                            back
+                            {{ 'back'|trans }}
                         </button>
                         <div class="pull-right">
                             <a type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect" href="{{ path('home_homepage') }}">
-                                Cancel
+                                {{ 'cancel'|trans }}
                             </a>
                             <button type="button" disabled class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect next">
-                                Continue
+                                {{ 'next'|trans }}
                             </button>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
         </div>
     </div>
 {% endblock %}
-{% block advert_scripts %}
-    <script src="{{ asset('content/js/Site/render-stepper.js') }}"></script>
+{% block advert_javascripts %}
+    <script src="{{ asset('content/js/site/render-stepper.js') }}"></script>
 {% endblock %}
 

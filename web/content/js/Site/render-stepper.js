@@ -1,18 +1,10 @@
-/**
- * Created by leflo on 03/02/2016.
- */
 $(function () {
-
-    Routing;
-    debugger;
     //  +------------------------------------------------------------------+
     //      Init variables
     //  +------------------------------------------------------------------+
     var current = 0;
     var stepContent = $(".wi-stepper-content");
-
     // Init  UI
-    stepContent.not(':eq(0)').hide();
 
     //  +------------------------------------------------------------------+
     //      Add class if subcategories is already load
@@ -38,27 +30,44 @@ $(function () {
             stepContent.not(':eq(' + current + ')').hide();
             switch (current) {
                 case 1: //step 2 because :eq() start with 0 index
-                    // $("#loader-form").removeClass("display-none");
-                    // var selectedSub = $("#selected-subcategories").val();
-                    // stepContent.eq(current).load('http://wolfi.local/app_dev.php/Annonce/car/new #form-advertisement', function(){
-                    //     $.getScript( "../../../content/js/material-design/manager-crud-material.js" );
-                    // });
+                    $("#loader-form").removeClass("display-none");
                     $.ajax({
                             type: "POST",
                             dataType: 'json',
-                            url: Routing.generate('ajax'),
-                            async: false //you won't need that if nothing in your following code is dependend of the result
+                            url: Routing.generate('ajax')
                         })
                         .done(function(response){
-                            template = response;
-                            stepContent.eq(current).html(template.html); //Change the html of the div with the id = "your_div"
+                            stepContent.eq(current).html(response);
                         })
                         .fail(function(jqXHR, textStatus, errorThrown){
-                            alert('Error : ' + errorThrown);
+                            stepContent.eq(current).html('Error : ' + errorThrown);
+                        })
+                        .always(function () {
+                            $("#loader-form").addClass("display-none");
+                            componentHandler.upgradeAllRegistered();
+                            $(".mdl-textfield").removeClass("is-invalid");
                         });
                     break;
-                case 2:
-                    alert("2");
+                case 3:
+                    if(getFormValues()){
+                        $.ajax({
+                                url: form.action,
+                                type: form.method,
+                                data: $(form).serialize()
+                            })
+                            .fail(function(jqXHR, textStatus, errorThrown){
+                                stepContent.eq(current).append('Error : ' + errorThrown);
+                            })
+                            .done(function(response){
+                                stepContent.eq(current).html(response);
+
+                            });
+                    } else {
+                        current = 1;
+                        stepContent.show();
+                        stepContent.not(':eq(' + current + ')').hide();
+                    }
+
                     break;
             }
         }
@@ -98,7 +107,6 @@ function getSubcategories(id, panel) {
     $.ajax({
         type      : 'post',
         url       : Routing.generate('GetSubcategoriesById', {id: id}),
-        //url: 'http://wolfi.local/app_dev.php/Home/GetSubcategories/' + id,
         beforeSend: function () {
             $(panel + " .loader").show();
         },
@@ -125,4 +133,19 @@ function selectedSubcategory(id) {
     $("#selected-subcategories").val(id);
     $("#selected-subcategories").change();
     $('.next').prop("disabled", false);
+}
+
+function getFormValues() {
+    var form = $("#form-advertisement > form")[0];
+    var result = true;
+    var controls = form.elements;
+
+    for (var i=0, iLen=controls.length; i<iLen; i++) {
+        if(controls[i].required === true){
+            result = false;
+            alert(controls[i].name + ': ' + controls[i].value);
+        }
+    }
+    // Prevent form submission
+    return false;
 }

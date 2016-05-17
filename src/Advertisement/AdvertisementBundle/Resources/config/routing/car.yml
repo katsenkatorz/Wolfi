@@ -2,3 +2,4 @@ car_new:
     path:     /new
     defaults: { _controller: "AdvertisementBundle:Car:new" }
     methods:  [GET, POST]
+

@@ -15,6 +15,9 @@ crud:
           Make: Marque
     Advertisement:
         table: ""
+        specifications: Caractéristiques
+        error:
+            price: Le champ doit être un nombre
         label:
             Title: Titre
             Price: Prix

@@ -1,15 +1,61 @@
-{% extends 'AdvertisementBundle::layout.html.twig' %}
-
-{% block advert_body -%}
-    <div id="form-advertisement">
-        <h1>Car creation</h1>
-        {{ form_start(form) }}
-        {{ form_widget(form) }}
-        {{ form_errors(form) }}
-        <input type="submit" value="Create" />
-        {{ form_end(form) }}
+<div id="form-advertisement">
+    {{ form_start(form, {'action': path('car_new')}) }}
+    <div class="mdl-grid">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+            {{ form_widget(form.Advertisement.title, {'attr': {'class': 'mdl-textfield__input'}}) }}
+            {{ form_label(form.Advertisement.title, null, {'label_attr': {'class': 'mdl-textfield__label'}}) }}
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+            {{ form_widget(form.Advertisement.price, {'attr': {'class': 'mdl-textfield__input', 'pattern' : '-?[0-9]*(\.[0-9]+)?'}}) }}
+            {{ form_label(form.Advertisement.price, null, {'label_attr': {'class': 'mdl-textfield__label'}}) }}
+            <span class="mdl-textfield__error">{{ 'crud.Advertisement.error.price'|trans }}</span>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+            {{ form_widget(form.Advertisement.description, {'attr': {'class': 'mdl-textfield__input', 'rows' : '3'}}) }}
+            {{ form_label(form.Advertisement.description, null, {'label_attr': {'class': 'mdl-textfield__label'}}) }}
+        </div>
     </div>
-{% endblock %}
-{% block advert_scripts %}
-    <script src="{{ asset('content/js/material-design/manager-crud-material.js') }}"></script>
-{% endblock %}
+    <hr>
+    <h5>{{ 'crud.Advertisement.specifications'|trans }}</h5>
+    <div class="mdl-grid">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+            {{ form_widget(form.year, {'attr': {'class': 'mdl-textfield__input'}}) }}
+            {{ form_label(form.year, null, {'label_attr': {'class': 'mdl-textfield__label'}}) }}
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+            {{ form_widget(form.model, {'attr': {'class': 'mdl-textfield__input'}}) }}
+            {{ form_label(form.model, null, {'label_attr': {'class': 'mdl-textfield__label'}}) }}
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+            {{ form_widget(form.engineSize, {'attr': {'class': 'mdl-textfield__input'}}) }}
+            {{ form_label(form.engineSize, null, {'label_attr': {'class': 'mdl-textfield__label'}}) }}
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+            {{ form_widget(form.colour, {'attr': {'class': 'mdl-textfield__input'}}) }}
+            {{ form_label(form.colour, null, {'label_attr': {'class': 'mdl-textfield__label'}}) }}
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+            {{ form_widget(form.mileage, {'attr': {'class': 'mdl-textfield__input'}}) }}
+            {{ form_label(form.mileage, null, {'label_attr': {'class': 'mdl-textfield__label'}}) }}
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+            {{ form_widget(form.Fuel, {'attr': {'class': 'mdl-textfield__input'}}) }}
+            {{ form_label(form.Fuel, null, {'label_attr': {'class': 'mdl-textfield__label'}}) }}
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+            {{ form_widget(form.Transmission, {'attr': {'class': 'mdl-textfield__input'}}) }}
+            {{ form_label(form.Transmission, null, {'label_attr': {'class': 'mdl-textfield__label'}}) }}
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+            {{ form_widget(form.Body, {'attr': {'class': 'mdl-textfield__input'}}) }}
+            {{ form_label(form.Body, null, {'label_attr': {'class': 'mdl-textfield__label'}}) }}
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+            {{ form_widget(form.Make, {'attr': {'class': 'mdl-textfield__input'}}) }}
+            {{ form_label(form.Make, null, {'label_attr': {'class': 'mdl-textfield__label'}}) }}
+        </div>
+    </div>
+    {{ form_errors(form) }}
+    <input type="submit" value="Create" />
+    {{ form_end(form) }}
+</div>
