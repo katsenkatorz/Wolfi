@@ -1,0 +1,71 @@
+{% use "form_div_layout.html.twig" %}
+
+{# Widgets #}
+{%- block form_widget -%}
+    {% if compound %}
+        {%- set attr = attr|merge({class: 'mdl-grid'|trim}) -%}
+        <div {{ block('widget_container_attributes') }}>
+            {{- block('form_widget_compound') -}}
+        </div>
+    {% else %}
+        {{- block('form_widget_simple') -}}
+    {% endif %}
+{%- endblock form_widget -%}
+
+{# select #}
+{% block choice_widget_collapsed -%}
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+        {% set attr = attr|merge({class: (attr.class|default('') ~ ' mdl-textfield__input')|trim}) %}
+        {{- parent() -}}
+        {{ form_label(form, null, {'label_attr': {'class': 'mdl-textfield__label'}}) }}
+    </div>
+{%- endblock %}
+
+{# textarea #}
+{% block textarea_widget -%}
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+        {% set attr = attr|merge({class: (attr.class|default('') ~ ' mdl-textfield__input')|trim, rows: '4'|trim}) %}
+        {{- parent() -}}
+        {{ form_label(form, null, {'label_attr': {'class': 'mdl-textfield__label'}}) }}
+    </div>
+{%- endblock textarea_widget %}
+
+{# input text/number #}
+{%- block form_widget_simple -%}
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+        {% if type is not defined or 'file' != type %}
+            {%- set attr = attr|merge({class: 'mdl-textfield__input'|trim}) -%}
+        {% endif %}
+        {{- parent() -}}
+        {{ form_label(form, null, {'label_attr': {'class': 'mdl-textfield__label'}}) }}
+        {% if type is defined and type == 'number' %}
+            <span class="mdl-textfield__error">{{ 'crud.Advertisement.error.price'|trans }}</span>
+        {% endif %}
+    </div>
+{%- endblock form_widget_simple -%}
+
+{%- block form_widget_compound -%}
+    {%- if form.parent is empty -%}
+        {{ form_errors(form) }}
+    {%- endif -%}
+    {{- block('form_rows') -}}
+    {{- form_rest(form) -}}
+{%- endblock form_widget_compound -%}
+
+
+{#Input type number #}
+{% block integer_widget %}
+    {%- set type = type|default('number') -%}
+    {{ block('form_widget_simple') }}
+{% endblock %}
+
+{%- block hidden_row -%}
+    <div class="display-none">
+        {{ form_widget(form) }}
+    </div>
+{%- endblock hidden_row -%}
+
+{%- block form_row -%}
+    {{- form_errors(form) }}
+    {{- form_widget(form) }}
+{%- endblock form_row -%}

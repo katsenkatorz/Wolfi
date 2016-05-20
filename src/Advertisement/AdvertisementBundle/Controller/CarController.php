@@ -48,7 +48,7 @@ class CarController extends Controller
 		else
 		{
 			//affichage du formulaire
-			$data = $this->renderView('AdvertisementBundle:car:new.html.twig', ['car' => $advert, 'form' => $form->createView()]);
+			$data = $this->renderView('AdvertisementBundle:car:new.html.twig', ['advert' => $advert, 'form' => $form->createView()]);
 		}
 
 		$json     = json_encode($data);
