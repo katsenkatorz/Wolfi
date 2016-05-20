@@ -18,6 +18,7 @@ class AdvertisementType extends AbstractType
             ->add('title',null, ['label' => 'crud.Advertisement.label.Title'])
             ->add('description',null, ['label' => 'crud.Advertisement.label.Description'])
             ->add('price',null, ['label' => 'crud.Advertisement.label.Price'])
+            ->add('ObjectToSell', CarType::class)
 //            ->add('dateAdd',null, ['label' => 'crud.Advertisement.label.Date add'])
 //            ->add('Subcategory')
         ;

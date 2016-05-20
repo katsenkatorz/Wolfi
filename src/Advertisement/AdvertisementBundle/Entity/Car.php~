@@ -15,7 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table("Car")
  * @ORM\Entity(repositoryClass="Advertisement\AdvertisementBundle\Repository\CarRepository")
  */
-class Car extends ObjectToSell
+class Car extends SellMyObject
 {
 	/**
 	 * @var integer
@@ -25,6 +25,12 @@ class Car extends ObjectToSell
 	 * @ORM\GeneratedValue(strategy="AUTO")
 	 */
 	private $id;
+
+	/**
+	 *
+	 * @ORM\OneToOne(targetEntity="Advertisement\AdvertisementBundle\Entity\Advertisement", cascade={"persist"})
+	 */
+	private $Advertisement;
 
 	/**
 	 *
@@ -216,6 +222,17 @@ class Car extends ObjectToSell
 		return $this->mileage;
 	}
 
+
+//      /**
+//       * Get Advertisement
+//       *
+//       * @return Advertisement
+//       */
+//      public function getAdvertisement()
+//      {
+//            return $this->Advertisement;
+//      }
+
 	/**
 	 * Set Fuel
 	 *
@@ -310,5 +327,17 @@ class Car extends ObjectToSell
 
 
 
-
+//    /**
+//     * Set advertisement
+//     *
+//     * @param Advertisement $advertisement
+//     *
+//     * @return Car
+//     */
+//    public function setAdvertisement(Advertisement $advertisement = null)
+//    {
+//        $this->Advertisement = $advertisement;
+//
+//        return $this;
+//    }
 }

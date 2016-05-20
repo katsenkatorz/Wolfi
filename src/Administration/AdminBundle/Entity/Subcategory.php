@@ -2,6 +2,7 @@
 
 namespace Administration\AdminBundle\Entity;
 
+use Administration\AdminBundle\Entity\Category;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -34,6 +35,13 @@ class Subcategory
      */
     private $name;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="uniquename", type="string", length=50)
+     */
+    private $uniquename;
 
     /**
      * Get id
@@ -72,10 +80,11 @@ class Subcategory
     /**
      * Set Category
      *
-     * @param \Administration\AdminBundle\Entity\Category $categorie
+     * @param Category $Category
      * @return Subcategory
+     * @internal param Category $categorie
      */
-    public function setCategory(\Administration\AdminBundle\Entity\Category $Category)
+    public function setCategory(Category $Category)
     {
         $this->Category = $Category;
 
@@ -85,7 +94,7 @@ class Subcategory
     /**
      * Get Category
      *
-     * @return \Administration\AdminBundle\Entity\Category
+     * @return Category
      */
     public function getCategory()
     {
@@ -95,5 +104,29 @@ class Subcategory
     public function __toString()
     {
         return $this->getName();
+    }
+
+    /**
+     * Set uniquename
+     *
+     * @param string $uniquename
+     *
+     * @return Subcategory
+     */
+    public function setUniquename($uniquename)
+    {
+        $this->uniquename = $uniquename;
+
+        return $this;
+    }
+
+    /**
+     * Get uniquename
+     *
+     * @return string
+     */
+    public function getUniquename()
+    {
+        return $this->uniquename;
     }
 }

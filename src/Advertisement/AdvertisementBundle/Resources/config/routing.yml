@@ -4,20 +4,25 @@ home_car:
 
 advertisement_homepage:
     path:     /
-    defaults: { _controller: AdvertisementBundle:Default:index }
+    defaults: { _controller: 'AdvertisementBundle:Default:index' }
 
-NewAdvertisement:
+ViewAdvertisement:
     path:     /Creation
-    defaults: { _controller: AdvertisementBundle:Advertisement:NewAdvertisement }
+    defaults: { _controller: 'AdvertisementBundle:Advertisement:ViewAdvertisement' }
+
+RouterAdvertisement:
+    path:     /router/{id}
+    defaults: { _controller: 'AdvertisementBundle:Advertisement:RouterFunctionByEntities' }
+    methods:  [GET, POST]
 
 GetSubcategoriesById:
     path:     /GetSubcategoriesById/{id}
-    defaults: { _controller: AdvertisementBundle:Advertisement:GetSubcategoriesById }
+    defaults: { _controller: 'AdvertisementBundle:Advertisement:GetSubcategoriesById' }
     options:
         expose: true
 
 ajax:
-    pattern: /ajax
-    defaults: { _controller : "AdvertisementBundle:Car:new" }
+    path: /ajax
+    defaults: { _controller : 'AdvertisementBundle:Car:new' }
     options:
         expose: true

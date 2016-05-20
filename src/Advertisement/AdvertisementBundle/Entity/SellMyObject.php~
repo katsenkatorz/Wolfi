@@ -1,0 +1,45 @@
+<?php
+
+namespace Advertisement\AdvertisementBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+
+/**
+ * SellMyObject
+ *
+ * @ORM\Table(name="sell_my_object")
+ * @ORM\Entity(repositoryClass="Advertisement\AdvertisementBundle\Repository\SellMyObjectRepository")
+ * @ORM\InheritanceType(value="TABLE_PER_CLASS")
+ * @ORM\DiscriminatorColumn(name="Subcategory", type="integer")
+ * @ORM\DiscriminatorMap({ "1" = "Car" })
+ */
+class SellMyObject
+{
+	/**
+	 * @var int
+	 *
+	 * @ORM\Column(name="id", type="integer")
+	 * @ORM\Id
+	 * @ORM\GeneratedValue(strategy="AUTO")
+	 */
+	private $id;
+
+	/**
+	 *
+	 *  @ORM\OneToOne(targetEntity="Advertisement\AdvertisementBundle\Entity\Advertisement", cascade={"persist"})
+	 */
+	private $Advertisement;
+
+
+	/**
+	 * Get id
+	 *
+	 * @return int
+	 */
+	public function getId()
+	{
+		return $this->id;
+	}
+}
+

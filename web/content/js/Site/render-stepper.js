@@ -30,11 +30,12 @@ $(function () {
             stepContent.not(':eq(' + current + ')').hide();
             switch (current) {
                 case 1: //step 2 because :eq() start with 0 index
+                    var id =  $("#selected-subcategories").val();
                     $("#loader-form").removeClass("display-none");
                     $.ajax({
                             type: "POST",
                             dataType: 'json',
-                            url: Routing.generate('ajax')
+                            url: Routing.generate('ajax', {id: id})
                         })
                         .done(function(response){
                             stepContent.eq(current).html(response);
@@ -48,8 +49,9 @@ $(function () {
                             $(".mdl-textfield").removeClass("is-invalid");
                         });
                     break;
-                case 3:
-                    if(getFormValues()){
+                case 2:
+                    var form = $("#form-advertisement > form")[0];
+                    if(getFormValues(form) || form.checkValidity()){
                         $.ajax({
                                 url: form.action,
                                 type: form.method,
@@ -67,11 +69,12 @@ $(function () {
                         stepContent.show();
                         stepContent.not(':eq(' + current + ')').hide();
                     }
-
+                    break;
+                case 3 :
                     break;
             }
         }
-        $('.back').prop("disabled", (current > 0 ? false : true));
+        $('.back').prop("disabled", (current <= 0));
 
     });
 
@@ -80,13 +83,13 @@ $(function () {
     //  +------------------------------------------------------------------+
     $(".back").click(function () {
         if (current > 0) {
-            current = current - 1;
+            current -= 1;
             if (current < stepContent.length) {
                 stepContent.show();
                 stepContent.not(':eq(' + current + ')').hide();
             }
         }
-        $('.back').prop("disabled", (current > 0 ? false : true));
+        $('.back').prop("disabled", (current <= 0));
     });
 
     //  +------------------------------------------------------------------+
@@ -132,18 +135,17 @@ function getSubcategories(id, panel) {
 function selectedSubcategory(id) {
     $("#selected-subcategories").val(id);
     $("#selected-subcategories").change();
-    $('.next').prop("disabled", false);
+    $(".next").prop("disabled", false);
 }
 
-function getFormValues() {
-    var form = $("#form-advertisement > form")[0];
+function getFormValues(form) {
     var result = true;
     var controls = form.elements;
 
-    for (var i=0, iLen=controls.length; i<iLen; i++) {
-        if(controls[i].required === true){
+    for (var i=0, iLen=controls.length; i < iLen; i++) {
+        if(controls[i].required === true && (controls[i].value != "" || controls[i].value != undefined)){
             result = false;
-            alert(controls[i].name + ': ' + controls[i].value);
+            controls[i].parentElement.className += " is-invalid";
         }
     }
     // Prevent form submission

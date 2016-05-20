@@ -41,7 +41,18 @@ class DataManagementService
 	}
 
 	/**
+	 * @param $id
+	 * @return \Administration\AdminBundle\Entity\Subcategory
+	 */
+	public function getSubcategoriesById($id)
+	{
+		return $this->em->getRepository('AdminBundle:Subcategory')->findOneBy(['id' => $id]);
+	}
+
+	/**
 	 * Return Sub categories By IdCategory
+	 *
+	 * @param $id
 	 * @return \Administration\AdminBundle\Entity\Category[]|array
 	 */
 	public function getSubcategoriesByIdCategory($id)

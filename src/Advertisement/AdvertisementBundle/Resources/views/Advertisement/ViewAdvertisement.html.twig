@@ -1,0 +1,81 @@
+{% extends 'AdvertisementBundle::layout.html.twig' %}
+{% block advert_page_title %}
+    Ajouter une annonce
+{% endblock %}
+{% block advert_body %}
+    <div class="mdl-grid">
+        <div class="mdl-cell--2-col-desktop"></div>
+        <div class="marge-fix mdl-cell--8-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-color--white mdl-shadow--3dp">
+
+            <!-- Steppers -->
+            <div class="wi-stepper">
+                <!-- Header Steppers -->
+                <div class="mdl-shadow--2dp wi-stepper-header">
+                    <div class="wi-stepper-group">
+                        <div class="wi-stepper-step">
+                            <div class="wi-stepper-chip mdl-color--primary">1</div>
+                            <div class="wi-stepper-title">
+                                Choisir une catégorie
+                            </div>
+                        </div>
+                        <div class="wi-stepper-separator"></div>
+                    </div>
+                    <div class="wi-stepper-group">
+                        <div class="wi-stepper-step">
+                            <div class="wi-stepper-chip mdl-color--primary">2</div>
+                            <span class="wi-stepper-title">Compléter l'annonce</span>
+                        </div>
+                        <div class="wi-stepper-separator"></div>
+                    </div>
+                    <div class="wi-stepper-group">
+                        <div class="wi-stepper-step">
+                            <div class="wi-stepper-chip mdl-color--primary">3</div>
+                            <span class="wi-stepper-title">Validation</span>
+                        </div>
+                        <div class="wi-stepper-separator"></div>
+                    </div>
+                </div>
+                <!-- Content Steppers -->
+                <div class="wi-stepper-content" id="wi-step-1">
+                    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                        <div class="mdl-tabs__tab-bar">
+                            {% for category in categories %}
+                                <a href="#category-{{ category.id }}-panel" data-id="{{ category.id }}" class="mdl-tabs__tab">{{ category.name }}</a>
+                            {% endfor %}
+                        </div>
+                        {% for category in categories %}
+                            <div class="mdl-tabs__panel" id="category-{{ category.id }}-panel">
+                                <div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate loader width-100 display-none"></div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <input type="hidden" id="selected-subcategories" />
+                </div>
+                <div class="wi-stepper-content display-none" id="wi-step-2">
+                    <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active display-none" id="loader-form"></div>
+                </div>
+                <div class="wi-stepper-content display-none" id="wi-step-3">
+                    3
+                </div>
+                <!-- Footer Steppers -->
+                <div class="wi-stepper-footer">
+                    <button type="button" disabled="" class="mdl-button mdl-js-button mdl-js-ripple-effect back">
+                        {{ 'back'|trans }}
+                    </button>
+                    <div class="pull-right">
+                        <a type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect" href="{{ path('home_homepage') }}">
+                            {{ 'cancel'|trans }}
+                        </a>
+                        <button type="button" disabled class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect next">
+                            {{ 'next'|trans }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block advert_javascripts %}
+    <script src="{{ asset('content/js/site/render-stepper.js') }}"></script>
+{% endblock %}
+
