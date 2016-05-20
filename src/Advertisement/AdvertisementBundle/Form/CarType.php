@@ -15,7 +15,6 @@ class CarType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-              ->add('Advertisement', AdvertisementType::class, ['label' => 'crud.Advertisement.table'])
               ->add('year', null, ['label' => 'crud.car.label.Year', 'required' => true])
               ->add('model', null, ['label' => 'crud.car.label.Model', 'required' => true])
               ->add('engineSize', null, ['label' => 'crud.car.label.Engine size', 'required' => true])
@@ -27,9 +26,10 @@ class CarType extends AbstractType
               ->add('Make', null, ['label' => 'crud.car.label.Make', 'required' => true])
         ;
     }
-    
+
     /**
      * @param OptionsResolver $resolver
+     * @throws \Symfony\Component\OptionsResolver\Exception\AccessException
      */
     public function configureOptions(OptionsResolver $resolver)
     {
