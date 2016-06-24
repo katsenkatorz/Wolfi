@@ -2,13 +2,12 @@
 
 namespace Advertisement\AdvertisementBundle\Entity;
 
-use Administration\AdminBundle\Entity\Subcategory;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Advertisement
  *
- * @ORM\Table(name="Advertisement")
+ * @ORM\Table("Advertisement")
  * @ORM\Entity(repositoryClass="Advertisement\AdvertisementBundle\Repository\AdvertisementRepository")
  */
 class Advertisement
@@ -23,14 +22,6 @@ class Advertisement
     private $id;
 
     /**
-     * @var integer
-     *
-     *  @ORM\ManyToOne(targetEntity="Advertisement\AdvertisementBundle\Entity\ObjectToSell", cascade={"persist"})
-     */
-    private $ObjectToSell;
-
-    /**
-     * @var integer
      *
      * @ORM\ManyToOne(targetEntity="Administration\AdminBundle\Entity\Subcategory", cascade={"persist"})
      */
@@ -170,14 +161,16 @@ class Advertisement
         return $this->dateAdd;
     }
 
+
+
     /**
      * Set subcategory
      *
-     * @param Subcategory $subcategory
+     * @param \Administration\AdminBundle\Entity\Subcategory $subcategory
      *
      * @return Advertisement
      */
-    public function setSubcategory($subcategory = null)
+    public function setSubcategory(\Administration\AdminBundle\Entity\Subcategory $subcategory = null)
     {
         $this->Subcategory = $subcategory;
 
@@ -187,34 +180,10 @@ class Advertisement
     /**
      * Get subcategory
      *
-     * @return Subcategory
+     * @return \Administration\AdminBundle\Entity\Subcategory
      */
     public function getSubcategory()
     {
         return $this->Subcategory;
-    }
-
-    /**
-     * Set objectToSell
-     *
-     * @param ObjectToSell $objectToSell
-     *
-     * @return Advertisement
-     */
-    public function setObjectToSell($objectToSell = null)
-    {
-        $this->ObjectToSell = $objectToSell;
-
-        return $this;
-    }
-
-    /**
-     * Get objectToSell
-     *
-     * @return ObjectToSell
-     */
-    public function getObjectToSell()
-    {
-        return $this->ObjectToSell;
     }
 }
