@@ -16,7 +16,6 @@ crud:
     Advertisement:
         table: ""
         specifications: Caractéristiques
-        Advert: Annonce
         error:
             price: Le champ doit être un nombre
         label:
