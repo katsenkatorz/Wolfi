@@ -2,7 +2,7 @@
 
 <div id="form-advertisement">
     {{ form_start(form, {'action': path('car_new')}) }}
-
+    <h5>{{ 'crud.Advertisement.Advert'|trans }}</h5>
     <div class="mdl-grid">
         {{ form_widget(form.title) }}
         {{ form_widget(form.price) }}
@@ -11,6 +11,7 @@
     <hr>
     <h5>{{ 'crud.Advertisement.specifications'|trans }}</h5>
     {{ form(form.ObjectToSell) }}
+    {{ form_rest(form) }}
     {{ form_errors(form) }}
     {{ form_end(form) }}
 </div>
