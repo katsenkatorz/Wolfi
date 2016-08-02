@@ -28,19 +28,19 @@ $(function () {
             //Load form subcategory
             stepContent.show();
             stepContent.not(':eq(' + current + ')').hide();
+            var id = $("#selected-subcategories").val();
             switch (current) {
                 case 1: //step 2 because :eq() start with 0 index
-                    var id =  $("#selected-subcategories").val();
                     $("#loader-form").removeClass("display-none");
                     $.ajax({
-                            type: "POST",
-                            dataType: 'json',
-                            url: Routing.generate('ajax', {id: id})
-                        })
-                        .done(function(response){
+                        type    : "POST",
+                        dataType: 'json',
+                        url     : Routing.generate('RouterAdvertisement', {id: id})
+                    })
+                        .done(function (response) {
                             stepContent.eq(current).html(response);
                         })
-                        .fail(function(jqXHR, textStatus, errorThrown){
+                        .fail(function (jqXHR, textStatus, errorThrown) {
                             stepContent.eq(current).html('Error : ' + errorThrown);
                         })
                         .always(function () {
@@ -51,20 +51,21 @@ $(function () {
                     break;
                 case 2:
                     var form = $("#form-advertisement > form")[0];
-                    if(getFormValues(form) || form.checkValidity()){
+
+                    if (getFormValues(form) || form.checkValidity()) {
                         $.ajax({
-                                url: form.action,
-                                type: form.method,
-                                data: $(form).serialize()
-                            })
-                            .fail(function(jqXHR, textStatus, errorThrown){
+                            url : Routing.generate('RouterAdvertisement', {id: id}),
+                            type: form.method,
+                            data: $(form).serialize()
+                        })
+                            .fail(function (jqXHR, textStatus, errorThrown) {
                                 stepContent.eq(current).append('Error : ' + errorThrown);
                             })
-                            .done(function(response){
+                            .done(function (response) {
                                 stepContent.eq(current).html(response);
-
                             });
-                    } else {
+                    }
+                    else {
                         current = 1;
                         stepContent.show();
                         stepContent.not(':eq(' + current + ')').hide();
@@ -142,8 +143,8 @@ function getFormValues(form) {
     var result = true;
     var controls = form.elements;
 
-    for (var i=0, iLen=controls.length; i < iLen; i++) {
-        if(controls[i].required === true && (controls[i].value != "" || controls[i].value != undefined)){
+    for (var i = 0, iLen = controls.length; i < iLen; i++) {
+        if (controls[i].required === true && (controls[i].value == "" || controls[i].value == undefined)) {
             result = false;
             controls[i].parentElement.className += " is-invalid";
         }

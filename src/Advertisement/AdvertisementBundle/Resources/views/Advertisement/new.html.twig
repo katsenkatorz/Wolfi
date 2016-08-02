@@ -1,0 +1,19 @@
+{% form_theme form 'form/fields.html.twig' %}
+
+<div id="form-advertisement">
+    {{ form_start(form) }}
+    <h5>{{ 'crud.Advertisement.Advert'|trans }}</h5>
+    <div class="mdl-grid">
+        {{ form_widget(form.title) }}
+        {{ form_widget(form.price) }}
+        {{ form_widget(form.description) }}
+    </div>
+    <hr>
+    <h5>{{ 'crud.Advertisement.specifications'|trans }}</h5>
+    <div>
+        {{ form_widget(form.ObjectToSell) }}
+    </div>
+
+    {{ form_errors(form) }}
+    {{ form_end(form) }}
+</div>

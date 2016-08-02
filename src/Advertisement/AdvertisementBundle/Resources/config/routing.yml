@@ -11,9 +11,10 @@ ViewAdvertisement:
     defaults: { _controller: 'AdvertisementBundle:Advertisement:ViewAdvertisement' }
 
 RouterAdvertisement:
-    path:     /router/{id}
+    path:     /new/{id}
     defaults: { _controller: 'AdvertisementBundle:Advertisement:RouterFunctionByEntities' }
-    methods:  [GET, POST]
+    options:
+            expose: true
 
 GetSubcategoriesById:
     path:     /GetSubcategoriesById/{id}
@@ -22,7 +23,7 @@ GetSubcategoriesById:
         expose: true
 
 ajax:
-    path: /ajax
-    defaults: { _controller : 'AdvertisementBundle:Car:new' }
+    path: /ajax/{id}
+    defaults: { _controller: 'AdvertisementBundle:Advertisement:New' }
     options:
         expose: true

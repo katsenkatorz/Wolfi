@@ -22,6 +22,14 @@ class Advertisement
     private $id;
 
     /**
+     * @var integer
+     *
+     *  @ORM\ManyToOne(targetEntity="Advertisement\AdvertisementBundle\Entity\ObjectToSell", cascade={"persist"})
+     */
+    private $ObjectToSell;
+
+    /**
+     * @var integer
      *
      * @ORM\ManyToOne(targetEntity="Administration\AdminBundle\Entity\Subcategory", cascade={"persist"})
      */
@@ -185,5 +193,29 @@ class Advertisement
     public function getSubcategory()
     {
         return $this->Subcategory;
+    }
+
+    /**
+     * Set objectToSell
+     *
+     * @param ObjectToSell $objectToSell
+     *
+     * @return Advertisement
+     */
+    public function setObjectToSell($objectToSell = null)
+    {
+        $this->ObjectToSell = $objectToSell;
+
+        return $this;
+    }
+
+    /**
+     * Get objectToSell
+     *
+     * @return ObjectToSell
+     */
+    public function getObjectToSell()
+    {
+        return $this->ObjectToSell;
     }
 }

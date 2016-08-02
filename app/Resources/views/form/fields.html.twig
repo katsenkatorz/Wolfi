@@ -59,12 +59,6 @@
     {{ block('form_widget_simple') }}
 {% endblock %}
 
-{%- block hidden_row -%}
-    <div class="display-none">
-        {{ form_widget(form) }}
-    </div>
-{%- endblock hidden_row -%}
-
 {%- block form_row -%}
     {{- form_errors(form) }}
     {{- form_widget(form) }}
