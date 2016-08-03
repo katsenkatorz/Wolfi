@@ -1,7 +1,3 @@
-home_car:
-    resource: "@AdvertisementBundle/Resources/config/routing/car.yml"
-    prefix:   /car
-
 advertisement_homepage:
     path:     /
     defaults: { _controller: 'AdvertisementBundle:Default:index' }

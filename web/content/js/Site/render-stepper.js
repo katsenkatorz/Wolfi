@@ -4,14 +4,12 @@ $(function () {
     //  +------------------------------------------------------------------+
     var current = 0;
     var stepContent = $(".wi-stepper-content");
-    // Init  UI
-
     //  +------------------------------------------------------------------+
-    //      Add class if subcategories is already load
-    //  +----------------------------------------------------------------[--+
-    $('.mdl-tabs__tab').click(function (e) {
+    //      Add class if subcategories is already load and load subcategories
+    //  +------------------------------------------------------------------+
+    $('.og-main-menu').click(function (e) {
         var result;
-        var panel = e.currentTarget.hash;
+        var panel = "#" + $(this).data('idcategory');
         var id = $(this).data("id");
         if (!$(panel).hasClass('load')) {result = getSubcategories(id, panel);}
         if (result) {$(panel).addClass('load');}
@@ -111,20 +109,15 @@ function getSubcategories(id, panel) {
     $.ajax({
         type      : 'post',
         url       : Routing.generate('GetSubcategoriesById', {id: id}),
-        beforeSend: function () {
-            $(panel + " .loader").show();
-        },
         error     : function (xhr, textStatus, error) {
-            $(panel + " .loader").hide();
             $(panel).append("Impossible de charger les sous catégories : " + error);
         },
         success   : function (data) {
-            $(panel).append("<ul>");
+            $('.mdl-spinner').addClass("display-none");
+            $(panel).append("<ul></ul>");
             $.each(data.Subcategories, function (index, value) {
-                $(panel).append('<li class="subcategory" id="subcategory-' + index + '"><a onclick="selectedSubcategory(' + index + ')">' + value + '</a></li>');
+                $(panel + " ul").append('<li class="subcategory" id="subcategory-' + index + '"><a onclick="selectedSubcategory(' + index + ')">' + value + '</a></li>');
             });
-            $(panel).append("</ul>");
-            $(panel + " .loader").hide();
         }
     });
     return true;

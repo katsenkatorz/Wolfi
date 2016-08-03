@@ -37,18 +37,26 @@
                 </div>
                 <!-- Content Steppers -->
                 <div class="wi-stepper-content" id="wi-step-1">
-                    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
-                        <div class="mdl-tabs__tab-bar">
-                            {% for category in categories %}
-                                <a href="#category-{{ category.id }}-panel" data-id="{{ category.id }}" class="mdl-tabs__tab">{{ category.name }}</a>
-                            {% endfor %}
-                        </div>
+                    {#START 1#}
+                    <ul id="og-grid" class="og-grid">
                         {% for category in categories %}
-                            <div class="mdl-tabs__panel" id="category-{{ category.id }}-panel">
-                                <div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate loader width-100 display-none"></div>
-                            </div>
+                        <li>
+                            <a class="og-main-menu mdl-color--blue-grey-600 mdl-color-text--white"
+                               data-idcategory="category-{{ category.id }}-panel"
+                               data-id="{{ category.id }}"
+                               data-largesrc="{{ asset('content/images/icones/')  ~ category.name ~ '.png' }}"
+                               data-title="{{ category.name }}"
+                               data-description="Choisir une sous-catégorie">
+                                <img src="{{ asset('content/images/icones/') ~ category.name ~ '.png' }}" alt="{{ category.name }}"/>
+
+                                {{ category.name }}
+                            </a>
+                        </li>
                         {% endfor %}
-                    </div>
+                    </ul>
+
+                    {#END 1#}
+
                     <input type="hidden" id="selected-subcategories" />
                 </div>
                 <div class="wi-stepper-content display-none" id="wi-step-2">
@@ -76,6 +84,15 @@
     </div>
 {% endblock %}
 {% block advert_javascripts %}
+    <script>
+        $(function() {
+            Grid.init();
+        });
+    </script>
+
+    <script src="{{ asset('content/js/site/og-grid.js') }}"></script>
     <script src="{{ asset('content/js/site/render-stepper.js') }}"></script>
 {% endblock %}
-
+{% block advert_scripts %}
+    <script src="{{ asset('content/js/library/modernizr.custom.js') }}"></script>
+{% endblock %}
