@@ -103,7 +103,7 @@
    h3{
       font-weight:300;
       font-size:52px;
-      padding:0px 0 10px;
+      padding:0 0 10px;
       margin-bottom:10px;
    }
    p{
@@ -112,17 +112,28 @@
       line-height:22px;
       color:#999999;
    }
-   li{
-      list-style-type:none;
+   .sub-active{
+      border:solid 2px white;
       a{
-         text-transform:uppercase;
-         letter-spacing:2px;
-         padding:10px 20px;
-         display:inline-block;
-         margin:30px 0 0;
-         outline:none;
-         &:hover{
-         }
+         color:white !important;
+
+      }
+   }
+   li{
+      -webkit-user-select: none; /* Chrome/Safari */
+      -moz-user-select: none; /* Firefox */
+      -ms-user-select: none; /* IE10+ */
+
+      /* Rules below not implemented in browsers yet */
+      -o-user-select: none;
+      user-select: none;
+
+      list-style-type:none;
+      display:inline-block;
+      border:solid 2px transparent;
+      a{
+         border:solid 1px white;
+
          &::before{
             display:inline-block;
             margin-right:10px;

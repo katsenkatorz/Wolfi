@@ -2,13 +2,12 @@
 
 namespace Advertisement\AdvertisementBundle\Entity;
 
-use Administration\AdminBundle\Entity\Subcategory;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Advertisement
  *
- * @ORM\Table(name="Advertisement")
+ * @ORM\Table("Advertisement")
  * @ORM\Entity(repositoryClass="Advertisement\AdvertisementBundle\Repository\AdvertisementRepository")
  */
 class Advertisement
@@ -23,8 +22,9 @@ class Advertisement
     private $id;
 
     /**
+     * @var integer
      *
-     *  @ORM\OneToOne(targetEntity="Advertisement\AdvertisementBundle\Entity\ObjectToSell", cascade={"persist"})
+     *  @ORM\ManyToOne(targetEntity="Advertisement\AdvertisementBundle\Entity\ObjectToSell", cascade={"persist"})
      */
     private $ObjectToSell;
 
@@ -172,26 +172,26 @@ class Advertisement
 
 
     /**
-     * Set subcategory
+     * Set objectToSell
      *
-     * @param Subcategory $subcategory
+     * @param ObjectToSell $objectToSell
      *
      * @return Advertisement
      */
-    public function setSubcategory($subcategory = null)
+    public function setObjectToSell($objectToSell = null)
     {
-        $this->Subcategory = $subcategory;
+        $this->ObjectToSell = $objectToSell;
 
         return $this;
     }
 
     /**
-     * Get subcategory
+     * Get objectToSell
      *
-     * @return Subcategory
+     * @return ObjectToSell
      */
-    public function getSubcategory()
+    public function getObjectToSell()
     {
-        return $this->Subcategory;
+        return $this->ObjectToSell;
     }
 }

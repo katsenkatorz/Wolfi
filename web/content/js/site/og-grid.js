@@ -440,8 +440,8 @@ var Grid = (function () {
         },
         calcHeight     : function () {
 
-            var heightPreview = winsize.height - this.$item.data('height') - marginExpanded,
-                itemHeight    = winsize.height;
+            var heightPreview = winsize.height - this.$item.data('height') - marginExpanded  - 150,
+                itemHeight    = winsize.height - 200;
 
             if (heightPreview < settings.minHeight) {
                 heightPreview = settings.minHeight;

@@ -95,9 +95,13 @@ $(function () {
     //      Add class in selected subcategory
     //  +------------------------------------------------------------------+
     $("#selected-subcategories").change(function () {
+
         var id = $(this).val();
         $(".subcategory").removeClass("sub-active");
-        $("#subcategory-" + id).addClass("sub-active");
+        if(id != "" || id != undefined){
+            $("#subcategory-" + id).addClass("sub-active");
+            $('main').animate({scrollTop: $(document).height()}, 350);
+        }
     });
 
 });
@@ -116,7 +120,10 @@ function getSubcategories(id, panel) {
             $('.mdl-spinner').addClass("display-none");
             $(panel).append("<ul></ul>");
             $.each(data.Subcategories, function (index, value) {
-                $(panel + " ul").append('<li class="subcategory" id="subcategory-' + index + '"><a onclick="selectedSubcategory(' + index + ')">' + value + '</a></li>');
+                $(panel + " ul").append('<li class="subcategory" id="subcategory-' + index + '">' +
+                    '<a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--blue-grey-200" onclick="selectedSubcategory(' + index + ')">'
+                    + '<i class="material-icons">done</i>&emsp;' + value +
+                    '</a></li>');
             });
         }
     });
@@ -127,9 +134,16 @@ function getSubcategories(id, panel) {
 //      Choose subcategory
 //  +------------------------------------------------------------------+
 function selectedSubcategory(id) {
-    $("#selected-subcategories").val(id);
+    if($("#selected-subcategories").val() == id){
+        $("#selected-subcategories").val("");
+        $(".next").prop("disabled", true);
+    } else {
+        $("#selected-subcategories").val(id);
+        $(".next").prop("disabled", false);
+    }
+
     $("#selected-subcategories").change();
-    $(".next").prop("disabled", false);
+
 }
 
 function getFormValues(form) {

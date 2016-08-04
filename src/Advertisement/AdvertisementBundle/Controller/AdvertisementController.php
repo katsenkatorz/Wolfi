@@ -2,6 +2,7 @@
 
 namespace Advertisement\AdvertisementBundle\Controller;
 
+use Administration\AdminBundle\Entity\Subcategory;
 use Advertisement\AdvertisementBundle\Entity\Advertisement;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -57,6 +58,7 @@ class AdvertisementController extends Controller
 	 * @param Request $request
 	 * @param null $id
 	 * @return string|Response
+	 * @throws \LogicException
 	 * @throws \InvalidArgumentException
 	 * @throws \Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException
 	 * @throws \Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException
@@ -66,6 +68,7 @@ class AdvertisementController extends Controller
 
 		$subcategories = $this->container->get('home_home.services.datamanagement')->getSubcategoriesById($id);
 		$json = 0;
+
 
 		switch ($subcategories->getUniquename())
 		{
@@ -88,7 +91,7 @@ class AdvertisementController extends Controller
 	 * @param Request $request
 	 * @param $form
 	 * @return Response
-	 * @throws \InvalidArgumentException
+	 * @throws \LogicException
 	 * @internal param null $id
 	 */
 	private function NewAction(Request $request, $form)
