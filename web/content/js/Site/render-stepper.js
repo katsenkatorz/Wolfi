@@ -11,7 +11,8 @@ $(function () {
         var result;
         var panel = "#" + $(this).data('idcategory');
         var id = $(this).data("id");
-        if (!$(panel).hasClass('load')) {result = getSubcategories(id, panel);}
+
+        if (!$(this).parent().hasClass('og-expanded')) {result = getSubcategories(id, panel);}
         if (result) {$(panel).addClass('load');}
         $(".subcategory").removeClass("sub-active");
         $('.next').prop("disabled", true);
