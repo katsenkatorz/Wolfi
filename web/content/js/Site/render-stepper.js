@@ -49,19 +49,25 @@ $(function () {
                         });
                     break;
                 case 2:
-                    var form = $("#form-advertisement > form")[0];
+                    var form = $("#form_data")[0];
+                    var formData = new FormData(form);
+                    debugger;
 
                     if (getFormValues(form) || form.checkValidity()) {
                         $.ajax({
                             url : Routing.generate('RouterAdvertisement', {id: id}),
                             type: form.method,
-                            data: $(form).serialize()
+                            data: formData,
+                            cache: false,
+                            contentType: false,
+                            processData: false
+
                         })
                             .fail(function (jqXHR, textStatus, errorThrown) {
                                 stepContent.eq(current).append('Error : ' + errorThrown);
                             })
                             .done(function (response) {
-                                stepContent.eq(current).html(response);
+                                stepContent.eq(current).html("<br><br><br><br><h3 class='mdl-typography--text-center mdl-color-text--blue-grey-700'>Votre annonce à bien été ajoutée !</h3>");
                             });
                     }
                     else {
@@ -160,3 +166,9 @@ function getFormValues(form) {
     // Prevent form submission
     return false;
 }
+
+
+
+
+
+
