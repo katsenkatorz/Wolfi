@@ -18,6 +18,8 @@ use Symfony\Component\HttpFoundation\Response;
 class AdvertisementController extends Controller
 {
 	/**
+	 * Return view with all category
+	 *
 	 * @return \Symfony\Component\HttpFoundation\Response
 	 * @throws \Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException
 	 * @throws \Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException
@@ -26,13 +28,11 @@ class AdvertisementController extends Controller
 	{
 		$categories = $this->container->get('home_home.services.datamanagement')->getCategories();
 
-		//$Subcategories = $this->container->get('home_home.services.datamanagement')->getSubcategoriesAndCategories();
-
 		return $this->render('AdvertisementBundle:Advertisement:ViewAdvertisement.html.twig', ['categories' => $categories]);
 	}
 
 	/**
-	 *
+	 * Method to load subcategories with id category
 	 * @param $id
 	 * @return JsonResponse
 	 * @throws \Exception
@@ -67,7 +67,7 @@ class AdvertisementController extends Controller
 	{
 
 		$subcategories = $this->container->get('home_home.services.datamanagement')->getSubcategoriesById($id);
-		$json = 0;
+		$json          = 0;
 
 
 		switch ($subcategories->getUniquename())
@@ -96,11 +96,11 @@ class AdvertisementController extends Controller
 	 */
 	private function NewAction(Request $request, $form)
 	{
-		$advert  = new Advertisement();
-		$form = $this->createForm($form, $advert);
+		$advert = new Advertisement();
+		$form   = $this->createForm($form, $advert);
 		$form->handleRequest($request);
 
-		//Enregistrement du formulaire
+		//Save form if valid and submit
 		if ($form->isSubmitted() && $form->isValid())
 		{
 			$date = new \DateTime();
@@ -111,7 +111,7 @@ class AdvertisementController extends Controller
 
 			$data = ['id' => $advert->getId()];
 		}
-		else //affichage du formulaire
+		else //show form
 		{
 			$data = $this->renderView('AdvertisementBundle:Advertisement:new.html.twig', ['advert' => $advert, 'form' => $form->createView()]);
 		}

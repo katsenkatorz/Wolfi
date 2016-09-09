@@ -1,13 +1,18 @@
 {% form_theme form 'form/fields.html.twig' %}
 
 <div id="form-advertisement">
-    {{ form_start(form) }}
+    {{ form_start(form, {'method': 'POST', 'attr': {'id': 'form_data'}}) }}
+   {#<form action="{{ path('RouterAdvertisement') }}" method="post" {{ form_enctype(form) }}>#}
+
     <h5>{{ 'crud.Advertisement.Advert'|trans }}</h5>
     <div class="mdl-grid">
         {{ form_widget(form.title) }}
         {{ form_widget(form.price) }}
         {{ form_widget(form.description) }}
     </div>
+    <hr>
+    <h5>{{ 'crud.Advertisement.images'|trans }}</h5>
+    {{ form_widget(form.mediaFirst) }}
     <hr>
     <h5>{{ 'crud.Advertisement.specifications'|trans }}</h5>
     <div>
@@ -16,4 +21,6 @@
 
     {{ form_errors(form) }}
     {{ form_end(form) }}
+
+   {#</form>#}
 </div>

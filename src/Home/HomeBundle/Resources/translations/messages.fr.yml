@@ -16,6 +16,7 @@ crud:
     Advertisement:
         table: ""
         specifications: Caractéristiques
+        images: Images
         error:
             price: Le champ doit être un nombre
         label:
