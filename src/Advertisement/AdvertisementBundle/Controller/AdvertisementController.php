@@ -103,7 +103,7 @@ class AdvertisementController extends Controller
 		//Save form if valid and submit
 		if ($form->isSubmitted() && $form->isValid())
 		{
-			$date = new \DateTime();
+			$date = new \DateTime('now');
 			$advert->setDateAdd($date);
 			$em = $this->getDoctrine()->getManager();
 			$em->persist($advert);

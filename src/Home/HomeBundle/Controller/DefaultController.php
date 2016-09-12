@@ -12,11 +12,23 @@
      */
     class DefaultController extends Controller
     {
-        /**
-         * @return \Symfony\Component\HttpFoundation\Response
-         */
+	    /**
+	     * Method of load the home site with all adverts
+	     *
+	     * @return \Symfony\Component\HttpFoundation\Response
+	     * @throws \Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException
+	     * @throws \Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException
+	     */
         public function indexAction()
         {
-            return $this->render('HomeBundle:Default:index.html.twig');
+        	$adverts = $this->container->get('home_home.services.datamanagement')->getAdverts();
+
+            return $this->render('HomeBundle:Default:index.html.twig', ['adverts' => $adverts]);
         }
+
+        public function showAdvertisementAction ($id_advert)
+	  {
+
+		return$this->render('HomeBundle:Advertisement:show.html.twig');
+	  }
     }

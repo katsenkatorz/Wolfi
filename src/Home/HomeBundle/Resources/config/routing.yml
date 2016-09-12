@@ -2,3 +2,7 @@ home_homepage:
     path:     /
     defaults: { _controller: HomeBundle:Default:index }
 
+show_advertisement:
+    path:     /Annonce/{id_advert}
+    defaults: { _controller: HomeBundle:Default:showAdvertisement }
+

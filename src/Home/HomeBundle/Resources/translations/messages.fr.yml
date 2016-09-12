@@ -17,6 +17,8 @@ crud:
         table: ""
         specifications: Caractéristiques
         images: Images
+        nothing: Pas d'annonces
+        see: Voir l'annonce
         error:
             price: Le champ doit être un nombre
         label:

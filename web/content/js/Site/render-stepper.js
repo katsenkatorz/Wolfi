@@ -51,7 +51,6 @@ $(function () {
                 case 2:
                     var form = $("#form_data")[0];
                     var formData = new FormData(form);
-                    debugger;
 
                     if (getFormValues(form) || form.checkValidity()) {
                         $.ajax({

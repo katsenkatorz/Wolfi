@@ -60,7 +60,7 @@ class Advertisement
 	/**
 	 * @var \DateTime
 	 *
-	 * @ORM\Column(name="date_add", type="date")
+	 * @ORM\Column(name="date_add", type="datetime")
 	 */
 	private $dateAdd;
 

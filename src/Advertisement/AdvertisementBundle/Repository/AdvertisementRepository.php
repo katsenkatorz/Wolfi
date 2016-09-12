@@ -10,4 +10,18 @@ namespace Advertisement\AdvertisementBundle\Repository;
  */
 class AdvertisementRepository extends \Doctrine\ORM\EntityRepository
 {
+	/**
+	 * Method to get Adverts with files
+	 *
+	 * @return array
+	 */
+	public function getAdvertsWithFile()
+	{
+		$qb = $this->createQueryBuilder('a')
+			->leftJoin('a.mediaFirst', 'm')
+			->select('a, m')
+			->orderBy('a.dateAdd', 'DESC');
+
+		return $qb->getQuery()->getResult();
+	}
 }

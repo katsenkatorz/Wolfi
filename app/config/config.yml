@@ -84,3 +84,9 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: User\UserBundle\Entity\User
+
+services:
+    twig.extension.core:
+        class: Twig_Extension_Staging
+        tags:
+            - { name: twig.extension }

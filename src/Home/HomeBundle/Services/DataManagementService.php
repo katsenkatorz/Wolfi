@@ -41,6 +41,15 @@ class DataManagementService
 	}
 
 	/**
+	 * Return all adverts order to desc date
+	 * @return \Administration\AdminBundle\Entity\Category[]|array
+	 */
+	public function getAdverts()
+	{
+		return $this->em->getRepository('AdvertisementBundle:Advertisement')->getAdvertsWithFile();
+	}
+
+	/**
 	 * @param $id
 	 * @return \Administration\AdminBundle\Entity\Subcategory
 	 */
