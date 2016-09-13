@@ -24,4 +24,23 @@ class AdvertisementRepository extends \Doctrine\ORM\EntityRepository
 
 		return $qb->getQuery()->getResult();
 	}
+
+	/**
+	 * Method to get Advert with files
+	 *
+	 * @param $id
+	 * @return array
+	 */
+	public function getAdvertWithFile($id)
+	{
+		$qb = $this->createQueryBuilder('a')
+			->leftJoin('a.mediaFirst', 'm')
+			->leftJoin('a.ObjectToSell', 'o')
+			->select('a, o, m')
+			->where('a.id = :id')
+			->orderBy('a.dateAdd', 'DESC')
+			->setParameter('id', $id);
+
+		return $qb->getQuery()->getResult();
+	}
 }

@@ -1,0 +1,100 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block title %}{{ advert.title }}{% endblock %}
+
+{% block body %}
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        {% include "AdvertisementBundle:shared:_header.html.twig" %}
+        <main class="mdl-layout__content">
+            <div class="wi-ribbon mdl-color--blue-grey-700"></div>
+            <div class="wi-main-advert">
+                <div class="page-content">
+                    <div class="mdl-grid">
+                        <div class="mdl-cell--2-col-desktop"></div>
+                        <div class="marge-fix mdl-cell--8-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-color--white mdl-shadow--3dp">
+                            <div class="mdl-grid">
+                                <div class="mdl-cell--12-col-desktop">
+                                    <h2 class="mdl-color-text--blue-grey-800 mdl-typography--text-center">{{ advert.title }}</h2>
+                                    <h5 class="mdl-typography--font-bold mdl-color-text--accent mdl-typography--text-right">{{ advert.price }}&nbsp;€</h5>
+                                    <section class="slider-for slider">
+                                        <div>
+                                            <img src="{{ asset(advert.mediaFirst.AssetPath) }}" alt="{{ advert.title }}" width="50%">
+                                        </div>
+                                        <div>
+                                            <img src="http://placehold.it/350x300?text=2">
+                                        </div>
+                                    </section>
+                                    <section class="slider-nav slider">
+                                        <div>
+                                            <img src="{{ asset(advert.mediaFirst.AssetPath) }}" alt="{{ advert.title }}" width="50%">
+                                        </div>
+                                        <div>
+                                            <img src="http://placehold.it/350x300?text=2">
+                                        </div>
+                                    </section>
+                                </div>
+                                <div class="mdl-cell--12-col-desktop">
+                                    <h6 class="mdl-typography--text-right">{{ advert.dateAdd|date("D d M H:i", "Europe/Paris") }}</h6>
+                                    <hr>
+                                    <h5>{{ 'crud.Advertisement.label.Description'|trans }}</h5>
+                                    {{ advert.description }}
+                                </div>
+                                <div class="mdl-cell--12-col-desktop">
+                                    <hr>
+                                    <h5>{{ 'crud.Advertisement.specifications'|trans }}</h5>
+                                    {% block home_spec %}
+                                    {% endblock %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mdl-cell--2-col-desktop"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        .slider-for img{
+            display:block;
+            width:50vw;
+            height:50vh;
+            object-fit:cover;
+        }
+
+        .slider-nav img{
+            display:block;
+            width:5vw;
+            height:5vh;
+            object-fit:cover;
+        }
+    </style>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $('.slider-for').slick({
+            slidesToShow  : 1,
+            slidesToScroll: 1,
+            arrows        : true,
+            fade          : true,
+            asNavFor      : '.slider-nav'
+        });
+        $('.slider-nav').slick({
+            slidesToShow  : 3,
+            slidesToScroll: 2,
+            asNavFor      : '.slider-for',
+            dots          : true,
+            centerMode    : true,
+            focusOnSelect : true
+        });
+    </script>
+    {% block advert_javascripts %}
+    {% endblock %}
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ asset('content/js/library/slick.min.js') }}"></script>
+    {% block home_scripts %}{% endblock %}
+{% endblock %}

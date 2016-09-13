@@ -26,7 +26,6 @@ abstract class ObjectToSell
 	 */
 	private $id;
 
-
 	/**
 	 * Get id
 	 *

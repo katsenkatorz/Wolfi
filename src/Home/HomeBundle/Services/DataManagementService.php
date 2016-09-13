@@ -50,6 +50,17 @@ class DataManagementService
 	}
 
 	/**
+	 * Return advert in terms of id
+	 *
+	 * @param $id
+	 * @return array
+	 */
+	public function getAdvertById($id)
+	{
+		return $this->em->getRepository('AdvertisementBundle:Advertisement')->getAdvertWithFile($id);
+	}
+
+	/**
 	 * @param $id
 	 * @return \Administration\AdminBundle\Entity\Subcategory
 	 */

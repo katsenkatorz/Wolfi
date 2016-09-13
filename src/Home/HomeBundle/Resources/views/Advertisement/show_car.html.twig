@@ -1,0 +1,43 @@
+{% extends 'HomeBundle::layout_advert.html.twig' %}
+{% block home_page_title %}
+{% endblock %}
+{% block home_spec %}
+
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp width-100">
+        <thead>
+        <tbody>
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric">{{ 'crud.car.label.Make'|trans }}</td>
+            <td>{{ advert.ObjectToSell.make.name }}</td>
+            <td class="mdl-data-table__cell--non-numeric">{{ 'crud.car.label.Model'|trans }}</td>
+            <td>{{ advert.ObjectToSell.model }}</td>
+        </tr>
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric">{{ 'crud.car.label.Year'|trans }}</td>
+            <td>{{ advert.ObjectToSell.year }}</td>
+            <td class="mdl-data-table__cell--non-numeric">{{ 'crud.car.label.Mileage'|trans }}</td>
+            <td>{{ advert.ObjectToSell.mileage }}</td>
+        </tr>
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric">{{ 'crud.car.label.Body'|trans }}</td>
+            <td>{{ advert.ObjectToSell.body.type }}</td>
+            <td class="mdl-data-table__cell--non-numeric">{{ 'crud.car.label.Fuel'|trans }}</td>
+            <td>{{ advert.ObjectToSell.fuel.type }}</td>
+        </tr>
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric">{{ 'crud.car.label.Transmission'|trans }}</td>
+            <td>{{ advert.ObjectToSell.transmission.type }}</td>
+            <td class="mdl-data-table__cell--non-numeric">{{ 'crud.car.label.Colour'|trans }}</td>
+            <td>{{ advert.ObjectToSell.colour }}</td>
+        </tr>
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric">{{ 'crud.car.label.Engine size'|trans }}</td>
+            <td>{{ advert.ObjectToSell.engineSize }}</td>
+        </tr>
+
+        </tbody>
+    </table>
+
+    <br>
+    <br>
+{% endblock %}

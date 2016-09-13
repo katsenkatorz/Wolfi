@@ -37,6 +37,12 @@ class Advertisement
 	private $mediaFirst;
 
 	/**
+	 *
+	 * @ORM\ManyToOne(targetEntity="Administration\AdminBundle\Entity\Subcategory", cascade={"persist"})
+	 */
+	private $subcategory;
+
+	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="title", type="string", length=75)
@@ -195,7 +201,6 @@ class Advertisement
 	}
 
 
-
     /**
      * Set mediaFirst
      *
@@ -218,5 +223,29 @@ class Advertisement
     public function getMediaFirst()
     {
         return $this->mediaFirst;
+    }
+
+    /**
+     * Set subcategory
+     *
+     * @param \Administration\AdminBundle\Entity\Subcategory $subcategory
+     *
+     * @return Advertisement
+     */
+    public function setSubcategory(\Administration\AdminBundle\Entity\Subcategory $subcategory = null)
+    {
+        $this->subcategory = $subcategory;
+
+        return $this;
+    }
+
+    /**
+     * Get subcategory
+     *
+     * @return \Administration\AdminBundle\Entity\Subcategory
+     */
+    public function getSubcategory()
+    {
+        return $this->subcategory;
     }
 }

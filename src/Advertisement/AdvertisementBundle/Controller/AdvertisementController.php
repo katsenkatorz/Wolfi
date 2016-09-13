@@ -66,14 +66,14 @@ class AdvertisementController extends Controller
 	public function RouterFunctionByEntitiesAction(Request $request, $id = null)
 	{
 
-		$subcategories = $this->container->get('home_home.services.datamanagement')->getSubcategoriesById($id);
+		$subcategory = $this->container->get('home_home.services.datamanagement')->getSubcategoriesById($id);
 		$json          = 0;
 
 
-		switch ($subcategories->getUniquename())
+		switch ($subcategory->getUniquename())
 		{
 			case 'car':
-				$json = $this->NewAction($request, 'Advertisement\AdvertisementBundle\Form\AdvertisementType');
+				$json = $this->NewAction($request, 'Advertisement\AdvertisementBundle\Form\AdvertisementType', $subcategory);
 				break;
 
 			default:
@@ -90,11 +90,12 @@ class AdvertisementController extends Controller
 	 *
 	 * @param Request $request
 	 * @param $form
+	 * @param $subcategory
 	 * @return Response
 	 * @throws \LogicException
 	 * @internal param null $id
 	 */
-	private function NewAction(Request $request, $form)
+	private function NewAction(Request $request, $form, $subcategory)
 	{
 		$advert = new Advertisement();
 		$form   = $this->createForm($form, $advert);
@@ -105,6 +106,7 @@ class AdvertisementController extends Controller
 		{
 			$date = new \DateTime('now');
 			$advert->setDateAdd($date);
+			$advert->setSubcategory($subcategory);
 			$em = $this->getDoctrine()->getManager();
 			$em->persist($advert);
 			$em->flush();
