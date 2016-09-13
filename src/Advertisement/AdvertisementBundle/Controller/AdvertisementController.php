@@ -4,6 +4,7 @@ namespace Advertisement\AdvertisementBundle\Controller;
 
 use Administration\AdminBundle\Entity\Subcategory;
 use Advertisement\AdvertisementBundle\Entity\Advertisement;
+use Monolog\Logger;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,6 +34,7 @@ class AdvertisementController extends Controller
 
 	/**
 	 * Method to load subcategories with id category
+	 *
 	 * @param $id
 	 * @return JsonResponse
 	 * @throws \Exception
@@ -67,7 +69,7 @@ class AdvertisementController extends Controller
 	{
 
 		$subcategory = $this->container->get('home_home.services.datamanagement')->getSubcategoriesById($id);
-		$json          = 0;
+		$json        = 0;
 
 
 		switch ($subcategory->getUniquename())
@@ -97,21 +99,30 @@ class AdvertisementController extends Controller
 	 */
 	private function NewAction(Request $request, $form, $subcategory)
 	{
+
 		$advert = new Advertisement();
 		$form   = $this->createForm($form, $advert);
 		$form->handleRequest($request);
+		$data = '';
 
 		//Save form if valid and submit
 		if ($form->isSubmitted() && $form->isValid())
 		{
-			$date = new \DateTime('now');
-			$advert->setDateAdd($date);
-			$advert->setSubcategory($subcategory);
-			$em = $this->getDoctrine()->getManager();
-			$em->persist($advert);
-			$em->flush();
-
-			$data = ['id' => $advert->getId()];
+			try
+			{
+				$date = new \DateTime('now');
+				$advert->setDateAdd($date);
+				$advert->setSubcategory($subcategory);
+				$em = $this->getDoctrine()->getManager();
+				$em->persist($advert);
+				$em->flush();
+				$data = ['id' => $advert->getId()];
+			}
+			catch (\Exception $ex)
+			{
+				$logger = $this->get('logger');
+				$logger->error('Adding advertisement in database without successfully, {message}', ['message' => $ex->getMessage()]);
+			}
 		}
 		else //show form
 		{

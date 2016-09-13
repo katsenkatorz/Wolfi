@@ -5,9 +5,9 @@ $(function () {
     });
 
     //Show autocomplete on focus in input search
-    $("#wi-search-input").focus(function () {
-        $("#wi-autocomplete-content").slideDown(150);
-    });
+   // $("#wi-search-input").focus(function () {
+   //     $("#wi-autocomplete-content").slideDown(150);
+   // });
 
     //Hide search auto complete on focus lose
     $("#wi-search-input").focusout(function () {

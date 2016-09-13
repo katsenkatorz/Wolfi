@@ -20,7 +20,7 @@
                                 <div class="mdl-card__supporting-text width-100">
                                     <span class="pull-right">{{ advert.dateAdd|date("D d M H:i", "Europe/Paris") }}</span>
                                     <h4>{{ advert.title|length > 20 ? advert.title|slice(0, 20) ~ '...' : advert.title  }}</h4>
-                                    {{ advert.description|length > 50 ? advert.description|slice(0, 50) ~ '...' : advert.description  }}
+                                    {{ advert.description|length > 150 ? advert.description|slice(0, 150) ~ '...' : advert.description  }}
                                 </div>
                                 <div class="mdl-card__actions mdl-card--border">
                                     <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect pull-right" href="{{ path('show_advertisement', {'id_advert': advert.id} ) }}">

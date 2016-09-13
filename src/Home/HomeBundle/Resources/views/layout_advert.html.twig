@@ -10,10 +10,10 @@
             <div class="wi-main-advert">
                 <div class="page-content">
                     <div class="mdl-grid">
-                        <div class="mdl-cell--2-col-desktop"></div>
-                        <div class="marge-fix mdl-cell--8-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-color--white mdl-shadow--3dp">
+                        <div class="mdl-cell mdl-cell--2-col-desktop"></div>
+                        <div class="mdl-cell marge-fix mdl-cell--8-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-color--white mdl-shadow--3dp">
                             <div class="mdl-grid">
-                                <div class="mdl-cell--12-col-desktop">
+                                <div class="mdl-cell mdl-cell--12-col-desktop">
                                     <h2 class="mdl-color-text--blue-grey-800 mdl-typography--text-center">{{ advert.title }}</h2>
                                     <h5 class="mdl-typography--font-bold mdl-color-text--accent mdl-typography--text-right">{{ advert.price }}&nbsp;€</h5>
                                     <section class="slider-for slider">
@@ -21,7 +21,10 @@
                                             <img src="{{ asset(advert.mediaFirst.AssetPath) }}" alt="{{ advert.title }}" width="50%">
                                         </div>
                                         <div>
-                                            <img src="http://placehold.it/350x300?text=2">
+                                            <img src="{{ asset(advert.mediaSecond.AssetPath) }}" alt="{{ advert.title }}" width="50%">
+                                        </div>
+                                        <div>
+                                            <img src="{{ asset(advert.mediaThird.AssetPath) }}" alt="{{ advert.title }}" width="50%">
                                         </div>
                                     </section>
                                     <section class="slider-nav slider">
@@ -29,17 +32,20 @@
                                             <img src="{{ asset(advert.mediaFirst.AssetPath) }}" alt="{{ advert.title }}" width="50%">
                                         </div>
                                         <div>
-                                            <img src="http://placehold.it/350x300?text=2">
+                                            <img src="{{ asset(advert.mediaFirst.AssetPath) }}" alt="{{ advert.title }}" width="50%">
+                                        </div>
+                                        <div>
+                                            <img src="{{ asset(advert.mediaThird.AssetPath) }}" alt="{{ advert.title }}" width="50%">
                                         </div>
                                     </section>
                                 </div>
-                                <div class="mdl-cell--12-col-desktop">
+                                <div class="mdl-cell mdl-cell--12-col-desktop">
                                     <h6 class="mdl-typography--text-right">{{ advert.dateAdd|date("D d M H:i", "Europe/Paris") }}</h6>
                                     <hr>
                                     <h5>{{ 'crud.Advertisement.label.Description'|trans }}</h5>
                                     {{ advert.description }}
                                 </div>
-                                <div class="mdl-cell--12-col-desktop">
+                                <div class="mdl-cell mdl-cell--12-col-desktop">
                                     <hr>
                                     <h5>{{ 'crud.Advertisement.specifications'|trans }}</h5>
                                     {% block home_spec %}
@@ -47,7 +53,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="mdl-cell--2-col-desktop"></div>
+                        <div class="mdl-cell mdl-cell--2-col-desktop"></div>
                     </div>
                 </div>
             </div>

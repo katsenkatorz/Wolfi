@@ -11,10 +11,14 @@
     </div>
     <hr>
     <h5>{{ 'crud.Advertisement.images'|trans }}</h5>
-    {{ form_widget(form.mediaFirst) }}
+    <div class="mdl-grid">
+        {{ form_widget(form.mediaFirst) }}
+        {{ form_widget(form.mediaSecond) }}
+        {{ form_widget(form.mediaThird) }}
+    </div>
     <hr>
     <h5>{{ 'crud.Advertisement.specifications'|trans }}</h5>
-    <div>
+    <div class="mdl-grid">
         {{ form_widget(form.ObjectToSell) }}
     </div>
 

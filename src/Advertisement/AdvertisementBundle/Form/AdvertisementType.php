@@ -21,6 +21,8 @@ class AdvertisementType extends AbstractType
             ->add('price',null, ['label' => 'crud.Advertisement.label.Price'])
             ->add('ObjectToSell', CarType::class)
             ->add('mediaFirst', FileType::class)
+            ->add('mediaSecond', FileType::class)
+            ->add('mediaThird', FileType::class)
 
         ;
     }

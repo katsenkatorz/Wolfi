@@ -2,8 +2,8 @@
 
 namespace Home\HomeBundle\Controller;
 
-use Advertisement\AdvertisementBundle\Entity\ObjectToSell;
-use Proxies\__CG__\Advertisement\AdvertisementBundle\Entity\Advertisement;
+
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 

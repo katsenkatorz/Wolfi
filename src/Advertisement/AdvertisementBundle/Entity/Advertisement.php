@@ -37,6 +37,18 @@ class Advertisement
 	private $mediaFirst;
 
 	/**
+	 * @ORM\OneToOne(targetEntity="Advertisement\AdvertisementBundle\Entity\File", cascade={"persist","remove"})
+	 * @ORM\JoinColumn(nullable=false)
+	 */
+	private $mediaSecond;
+
+	/**
+	 * @ORM\OneToOne(targetEntity="Advertisement\AdvertisementBundle\Entity\File", cascade={"persist","remove"})
+	 * @ORM\JoinColumn(nullable=false)
+	 */
+	private $mediaThird;
+
+	/**
 	 *
 	 * @ORM\ManyToOne(targetEntity="Administration\AdminBundle\Entity\Subcategory", cascade={"persist"})
 	 */
@@ -247,5 +259,53 @@ class Advertisement
     public function getSubcategory()
     {
         return $this->subcategory;
+    }
+
+    /**
+     * Set mediaSecond
+     *
+     * @param \Advertisement\AdvertisementBundle\Entity\File $mediaSecond
+     *
+     * @return Advertisement
+     */
+    public function setMediaSecond(\Advertisement\AdvertisementBundle\Entity\File $mediaSecond)
+    {
+        $this->mediaSecond = $mediaSecond;
+
+        return $this;
+    }
+
+    /**
+     * Get mediaSecond
+     *
+     * @return \Advertisement\AdvertisementBundle\Entity\File
+     */
+    public function getMediaSecond()
+    {
+        return $this->mediaSecond;
+    }
+
+    /**
+     * Set mediaThird
+     *
+     * @param \Advertisement\AdvertisementBundle\Entity\File $mediaThird
+     *
+     * @return Advertisement
+     */
+    public function setMediaThird(\Advertisement\AdvertisementBundle\Entity\File $mediaThird)
+    {
+        $this->mediaThird = $mediaThird;
+
+        return $this;
+    }
+
+    /**
+     * Get mediaThird
+     *
+     * @return \Advertisement\AdvertisementBundle\Entity\File
+     */
+    public function getMediaThird()
+    {
+        return $this->mediaThird;
     }
 }
