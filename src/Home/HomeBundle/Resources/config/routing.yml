@@ -6,3 +6,6 @@ show_advertisement:
     path:     /Annonce/{id_advert}
     defaults: { _controller: HomeBundle:Default:showAdvertisement }
 
+search:
+    path:     /search
+    defaults: { _controller: HomeBundle:Default:search }

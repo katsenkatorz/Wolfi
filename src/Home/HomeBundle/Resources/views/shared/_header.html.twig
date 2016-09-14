@@ -6,16 +6,17 @@
         </a>
 
         <div class="mdl-layout-spacer wi-search">
-            <div id="wi-search-wrapper">
+            <form id="wi-search-wrapper" action="{{ path('search') }}" method="POST">
                 <i class="material-icons">search</i>
-                <input id="wi-search-input" placeholder="Rechercher" />
+                {{ form_widget(form.search) }}
+                {#<input id="wi-search-input" placeholder="Rechercher" />#}
 
                 <div id="wi-autocomplete-wrapper">
                     <div id="wi-autocomplete-content">
 
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             {% include 'UserBundle:Shared:_userConnectedOn.html.twig' %}

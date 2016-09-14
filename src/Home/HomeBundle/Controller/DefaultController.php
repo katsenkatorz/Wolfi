@@ -4,6 +4,7 @@ namespace Home\HomeBundle\Controller;
 
 
 
+use Home\HomeBundle\Form\SearchFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
@@ -25,7 +26,9 @@ class DefaultController extends Controller
 	{
 		$adverts = $this->container->get('home_home.services.datamanagement')->getAdverts();
 
-		return $this->render('HomeBundle:Default:index.html.twig', ['adverts' => $adverts]);
+		$form = $this->createForm(new SearchFormType());
+
+		return $this->render('HomeBundle:Default:index.html.twig', ['adverts' => $adverts, 'form' => $form->createView()]);
 	}
 
 	/**
@@ -40,5 +43,27 @@ class DefaultController extends Controller
 		$uniqueName = $advert->getSubcategory()->getUniqueName();
 
 		return $this->render('HomeBundle:Advertisement:show_' . $uniqueName . '.html.twig', ['advert' => $advert]);
+	}
+
+	/**
+	 * @return \Symfony\Component\HttpFoundation\Response
+	 * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+	 */
+	public function searchAction()
+	{
+		$form = $this->createForm(new SearchFormType());
+		if ($this->get('request')->getMethod() === 'POST')
+		{
+			$form->bind($this->get('request'));
+			$queryFromClient = $form['search']->getData();
+			$adverts = $this->container->get('home_home.services.datamanagement')->getAdvertsWithWhere($queryFromClient);
+		}
+		else
+		{
+			throw $this->createNotFoundException('La page n\'existe pas.');
+		}
+
+
+		return $this->render('HomeBundle:Default:index.html.twig', ['adverts' => $adverts, 'form' => $form->createView()]);
 	}
 }

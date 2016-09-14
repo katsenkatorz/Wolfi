@@ -43,4 +43,23 @@ class AdvertisementRepository extends \Doctrine\ORM\EntityRepository
 
 		return $qb->getQuery()->getResult();
 	}
+
+	/**
+	 * Methode to get Advert where query parameters
+	 * @param $query
+	 */
+	public function getAdvertWithWhere($query)
+	{
+		$qb = $this->createQueryBuilder('a')
+			->leftJoin('a.mediaFirst', 'm')
+			->select('a, m')
+			->where('a.title like :query')
+			->orWhere('a.description like :query')
+			->orderBy('a.dateAdd', 'DESC')
+			->setParameter('query', $query);
+		;
+
+		return $qb->getQuery()->getResult();
+
+	}
 }

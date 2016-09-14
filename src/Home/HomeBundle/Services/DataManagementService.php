@@ -49,6 +49,11 @@ class DataManagementService
 		return $this->em->getRepository('AdvertisementBundle:Advertisement')->getAdvertsWithFile();
 	}
 
+	public function getAdvertsWithWhere($query)
+	{
+		return $this->em->getRepository('AdvertisementBundle:Advertisement')->getAdvertWithWhere($query);
+	}
+
 	/**
 	 * Return advert in terms of id
 	 *
