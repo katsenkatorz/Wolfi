@@ -3,7 +3,7 @@ home_homepage:
     defaults: { _controller: HomeBundle:Default:index }
 
 show_advertisement:
-    path:     /Annonce/{id_advert}
+    path:     /Advert/{id_advert}
     defaults: { _controller: HomeBundle:Default:showAdvertisement }
 
 search:

@@ -75,7 +75,13 @@ class AdvertisementController extends Controller
 		switch ($subcategory->getUniquename())
 		{
 			case 'car':
-				$json = $this->NewAction($request, 'Advertisement\AdvertisementBundle\Form\AdvertisementType', $subcategory);
+				$json = $this->NewAction($request, 'Advertisement\AdvertisementBundle\Form\AdvertisementCarType', $subcategory);
+				break;
+			case 'homes':
+				$json = $this->NewAction($request, 'Advertisement\AdvertisementBundle\Form\AdvertisementHomesType', $subcategory);
+				break;
+			case 'petsForSale':
+				$json = $this->NewAction($request, 'Advertisement\AdvertisementBundle\Form\AdvertisementPetsType', $subcategory);
 				break;
 
 			default:

@@ -1,0 +1,19 @@
+{% extends 'HomeBundle::layout_advert.html.twig' %}
+{% block home_page_title %}
+{% endblock %}
+{% block home_spec %}
+
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp width-100">
+        <thead>
+        <tbody>
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric">{{ 'crud.pet.label.old'|trans }}</td>
+            <td>{{ advert.ObjectToSell.old }}</td>
+
+        </tr>
+
+
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -56,7 +56,7 @@ class AdvertisementRepository extends \Doctrine\ORM\EntityRepository
 			->where('a.title like :query')
 			->orWhere('a.description like :query')
 			->orderBy('a.dateAdd', 'DESC')
-			->setParameter('query', $query);
+			->setParameter('query', '%' . $query . '%');
 		;
 
 		return $qb->getQuery()->getResult();

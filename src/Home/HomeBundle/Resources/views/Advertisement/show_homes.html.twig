@@ -1,0 +1,24 @@
+{% extends 'HomeBundle::layout_advert.html.twig' %}
+{% block home_page_title %}
+{% endblock %}
+{% block home_spec %}
+
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp width-100">
+        <thead>
+        <tbody>
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric">{{ 'crud.home.label.size'|trans }}</td>
+            <td>{{ advert.ObjectToSell.size.type }}</td>
+            <td class="mdl-data-table__cell--non-numeric">{{ 'crud.home.label.kind'|trans }}</td>
+            <td>{{ advert.ObjectToSell.kind.kind }}</td>
+        </tr>
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric">{{ 'crud.home.label.area'|trans }}</td>
+            <td>{{ advert.ObjectToSell.area }}</td>
+
+        </tr>
+
+        </tbody>
+    </table>
+
+{% endblock %}

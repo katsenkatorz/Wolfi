@@ -7,7 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AdvertisementType extends AbstractType
+class AdvertisementPetsType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -19,7 +19,7 @@ class AdvertisementType extends AbstractType
             ->add('title',null, ['label' => 'crud.Advertisement.label.Title'])
             ->add('description',null, ['label' => 'crud.Advertisement.label.Description'])
             ->add('price',null, ['label' => 'crud.Advertisement.label.Price'])
-            ->add('ObjectToSell', CarType::class)
+            ->add('ObjectToSell', PetsType::class)
             ->add('mediaFirst', FileType::class)
             ->add('mediaSecond', FileType::class)
             ->add('mediaThird', FileType::class)

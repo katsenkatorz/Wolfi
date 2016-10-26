@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="Advertisement\AdvertisementBundle\Repository\ObjectToSellRepository")
  * @ORM\InheritanceType(value="JOINED")
  * @ORM\DiscriminatorColumn(name="subcategory", type="integer")
- * @ORM\DiscriminatorMap({"1" = "Car"})
+ * @ORM\DiscriminatorMap({"1" = "Car", "2" = "Homes", "3" = "Pets"})
  */
 abstract class ObjectToSell
 {

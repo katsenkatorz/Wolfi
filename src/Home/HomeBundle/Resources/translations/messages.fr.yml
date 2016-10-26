@@ -2,6 +2,14 @@
 Create: Création
 Delete: Supprimer
 crud:
+    pet:
+        label:
+            old: Age
+    home:
+        label:
+            area: Surface
+            kind: Nature
+            size: Type
     car:
         label:
           Year: Année
